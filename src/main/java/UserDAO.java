@@ -150,6 +150,7 @@ public enum UserDAO {
 		
 		// Get the user's ID based on the provided user name
 	    long userId = getUserID(userName);
+	    long newDogId = -1;
 	    
 	    if (userId == -1) {
 	        System.out.println("User not found. Cannot insert dog.");
@@ -157,18 +158,27 @@ public enum UserDAO {
 	    }
 		
 	    PreparedStatement query = connection.prepareStatement("INSERT INTO \"PUBLIC\".\"DOGS\" "
-	    						+ "(id, name, age, breed, colour, activity, maintenance, userID) "
-	    						+ "VALUES (?, ?, ?, ?, ?, ?, ?)");
+                + "(name, age, breed, colour, activity, maintenance, userID) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?)",
+                Statement.RETURN_GENERATED_KEYS);
 		
-		query.setString(1, newDog.getName());
-		query.setLong(2,  newDog.getAge());
-		query.setString(3,  newDog.getBreed());
-		query.setString(4,  newDog.getColor());
-		query.setString(5,  newDog.getActivity());
-		query.setString(6,  newDog.getMaintenance());
-		query.setLong(7, userId);
+	    query.setString(1, newDog.getName());
+	    query.setLong(2,  newDog.getAge());
+	    query.setString(3,  newDog.getBreed());
+	    query.setString(4,  newDog.getColor());
+	    query.setString(5,  newDog.getActivity());
+	    query.setString(6,  newDog.getMaintenance());
+	    query.setLong(7, userId);
+	    
+	    query.executeUpdate();
 		
-		query.executeUpdate();
+	    ResultSet generatedKeys = query.getGeneratedKeys();
+	    if (generatedKeys.next()) {
+	        newDogId = generatedKeys.getLong(1);
+	        newDog.setID((int) newDogId);
+	    } else {
+	        System.out.println("Failed to retrieve the generated ID.");
+	    }
 		
 		System.out.println("Dog " + newDog.getID() + " " + newDog.getName() + " was successfully added.");
 	}
@@ -408,7 +418,6 @@ public enum UserDAO {
 	    
 	    if (dogs != null) {
 	        for (Dogs dog : dogs) {
-	        	System.out.println("-------------------------");
 	            System.out.println("Dog ID: " + dog.getID());
 	            System.out.println("Name: " + dog.getName());
 	            System.out.println("Age: " + dog.getAge());
@@ -416,7 +425,13 @@ public enum UserDAO {
 	            System.out.println("Color: " + dog.getColor());
 	            System.out.println("Activity: " + dog.getActivity());
 	            System.out.println("Maintenance: " + dog.getMaintenance());
-	            System.out.println("Owner: " + dog.getOwnerName());
+
+	            String ownerName = dog.getOwnerName();
+	            if (ownerName != null) {
+	                System.out.println("Owner: " + ownerName);
+	            } else {
+	                System.out.println("Owner: Not found");
+	            }
 	            System.out.println("-------------------------");
 	        }
 	    }
