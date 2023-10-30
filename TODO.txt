@@ -1,0 +1,7 @@
+1. Create session page where user logs in with email and password 
+	-> Greeting with their name 
+	-> If user doesn't exist in cookies, it creates them 
+2. Second page
+	-> User account: they see dogs associated with them
+3. Third page 
+	-> User sees other people's name and their dog name/breed/age
