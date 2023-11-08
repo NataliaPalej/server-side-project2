@@ -15,18 +15,28 @@ function goBack() {
 }
 </script>
 
+<style>
+	.background{
+		background-image: url("background7.jpg");
+  		background-repeat: no-repeat;
+  		background-attachment: fixed;
+  		background-size: cover;
+		align-items: center;
+		height: 15vh;
+		margin: 0;
+		}
+</style>
+
 <title>Natalia Palej A00279259</title>
 </head>
 
-<body>
-<h1 class="w3-allerta">My Dog Details</h1>
+<body class="background">
+<h1 class="w3-allerta">All Dogs</h1>
 <br>
 
 <!-- *Add Name from Cookies* -->
 <h3>Hello, </h3>
 <br>
-
-<h3>Other Dogs</h3>
 
 <!-- Dogs Details represented in table -->
 <div class="w3-container w3-center">
@@ -59,7 +69,6 @@ function goBack() {
 	
 </div>
 		
-<!-- Footer, *change background* -->
 <footer class="w3-padding-small">
 	<p>Natalia Palej<br>
 	Student No: A00279259</p>

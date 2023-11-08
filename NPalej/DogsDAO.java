@@ -36,8 +36,10 @@ public enum DogsDAO {
 	        preparedStatement.setString(1, email);
 	        preparedStatement.setString(2, password);
 
+	        // Execute the query.
 	        resultSet = preparedStatement.executeQuery();
 
+	        // Check if there is any user that matches input
 	        if (resultSet.next() && resultSet.getInt(1) > 0) {
 	        	System.out.println("User " + email + " exists.");
 	            return true;
@@ -233,36 +235,37 @@ public enum DogsDAO {
 		}    
 	}
 		
-	public List<Dogs> dogsList() throws ClassNotFoundException, SQLException {
-		Connection connection = null;
-		List<Dogs> dogsList = new ArrayList<Dogs>();
-		
-		try {
-			connection = getConnection();
-			Statement statement = connection.createStatement();
-			ResultSet resultSet = statement.executeQuery("SELECT * from DOGS");
-			
-			while (resultSet.next()) {
-				Dogs dog = new Dogs();
-		        dog.setID((int) resultSet.getLong("id"));
-		        dog.setName(resultSet.getString("name"));
-		        dog.setAge(resultSet.getString("age"));
-		        dog.setBreed(resultSet.getString("breed"));
-		        dog.setColor(resultSet.getString("colour"));
-		        dog.setActivity(resultSet.getString("activity"));
-		        dog.setMaintenance(resultSet.getString("maintenance"));
-		        dog.setOwner_email("owner_email");
-		        dog.setOwner_name("owner_name");
-		        dog.setOwner_password("owner_password");
-		        dogsList.add(dog);
-		        }
-		}finally {
-			if (connection != null) {
-				connection.close();
-				}
-			}
-		return dogsList;
-	}
+//	public List<Dogs> dogsList() throws ClassNotFoundException, SQLException {
+//		
+//		Connection connection = null;
+//		List<Dogs> dogsList = new ArrayList<Dogs>();
+//		
+//		try {
+//			connection = getConnection();
+//			Statement statement = connection.createStatement();
+//			ResultSet resultSet = statement.executeQuery("SELECT * from DOGS");
+//			
+//			while (resultSet.next()) {
+//				Dogs dog = new Dogs();
+//		        dog.setID((int) resultSet.getLong("id"));
+//		        dog.setName(resultSet.getString("name"));
+//		        dog.setAge((int) resultSet.getLong("age"));
+//		        dog.setBreed(resultSet.getString("breed"));
+//		        dog.setColor(resultSet.getString("colour"));
+//		        dog.setActivity(resultSet.getString("activity"));
+//		        dog.setMaintenance(resultSet.getString("maintenance"));
+//		        dog.setOwner_email(owner_email);
+//		        dog.setOwner_name(owner_name);
+//		        dog.setOwner_password(owner_password);
+//		        dogsList.add(dog);
+//		        }
+//		}finally {
+//			if (connection != null) {
+//				connection.close();
+//				}
+//			}
+//		return dogsList;
+//	}
 		
 	/**
 	* Main method

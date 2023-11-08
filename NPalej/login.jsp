@@ -10,19 +10,6 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Allerta+Stencil">
 <link rel="stylesheet" type="text/css" href="style.css">
 <title>Natalia Palej A00279259</title>
-
-<style>
-	.body{
-		background-image: ("background.jpg");
-  		background-repeat: no-repeat;
-  		background-attachment: fixed;
-  		background-size: cover;
-		align-items: center;
-		height: 90vh;
-		margin: 0;
-		}
-</style>
-
 </head>
 
 <body>

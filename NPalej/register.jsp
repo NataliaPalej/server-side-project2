@@ -10,27 +10,13 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Allerta+Stencil">
 <link rel="stylesheet" type="text/css" href="style.css">
 <title>Natalia Palej A00279259</title>
-
-<style>
-	.background{
-		background-image: url("background4.jpg");
-  		background-repeat: no-repeat;
-  		background-attachment: fixed;
-  		background-size: cover;
-		align-items: center;
-		height: 90vh;
-		margin: 0;
-		}
-</style>
-
-
 </head>
 
-<body class="background">
+<body>
 <h1 class="w3-allerta">Register Dog</h1>
 
-<div class="body w3-right">
-	<form method = "post" action="RegisterServlet" class="w3-container w3-padding form">
+<div class="body">
+	<form method = "post" action="RegisterServlet" class="w3-container w3-padding">
 		<label>Dog Name: </label> 
 		<input type="text" name="name"/>
 		<br>

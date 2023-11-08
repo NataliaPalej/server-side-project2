@@ -22,23 +22,21 @@ public class IndexServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 	    String userEmail = (String) session.getAttribute("email");
 	    
-	    if (userEmail != null) {
+	    //if (userEmail != null) {
 	        // Get dogs associated with the logged-in user's email
-	        List<Dogs> usersDog;
 			try {
-				usersDog = DogsDAO.instance.getDogByUserEmail(userEmail);
+				List<Dogs> userDog = DogsDAO.instance.getDogByUserEmail(userEmail);
 				
 				// Add the list of dogs to the request
-		        request.setAttribute("dogsList", usersDog);
+		        request.setAttribute("dogsList", userDog);
 
-		        // Forward the request to index.jsp
 		        request.getRequestDispatcher("index.jsp").forward(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}       
-	    } else {
-	        response.sendRedirect("login.jsp");
-	    }
+	    //} else {
+	    //    response.sendRedirect("login.jsp");
+	    //}
 	}
 
 }

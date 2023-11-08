@@ -12,33 +12,24 @@
 <title>Natalia Palej A00279259</title>
 
 <style>
-	.body{
-		background-image: ("background.jpg");
+	.background{
+		background-image: ("goodbye2.jpg");
   		background-repeat: no-repeat;
   		background-attachment: fixed;
   		background-size: cover;
 		align-items: center;
-		height: 90vh;
+		height: auto;
 		margin: 0;
 		}
 </style>
 
 </head>
 
-<body>
-<h1 class="w3-allerta">Dogs Application</h1>
+<body class="background">
 
-<div class="body">
-	<form method = "post" action="login2.jsp" class="w3-container w3-padding">
-	<!-- <form method = "post" action="LoginServlet" class="w3-container w3-padding"> -->
-		<label>Email: </label> 
-		<input type="text" name="email"/>
-		<br>
-		<label>Password</label> 
-		<input type="text" name="password"/>
-		<br>
-		<input type="submit" value="Login" class="w3-padding-large w3-right w3-hover-purple w3-round-large"/>
-	</form>
+<h1 class="w3-allerta">G O O D B Y E</h1>
+<div class="body w3-center">
+	<h2>Hope to see you again, </h2>
 </div>
 	
 <footer class="w3-padding-small">
@@ -47,5 +38,6 @@
 	<p>Email: <a href="mailto:A00279259@student.tus.ie">A00279259@student.tus.ie</a><br>
 	Software Design with Artificial Intelligence for Cloud Computing</p>
 </footer>
+
 </body>
 </html>

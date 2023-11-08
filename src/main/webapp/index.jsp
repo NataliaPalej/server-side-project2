@@ -9,14 +9,27 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Allerta+Stencil">
 <link rel="stylesheet" type="text/css" href="style.css">
 <title>Natalia Palej A00279259</title>
+
+<style>
+	.background{
+		background-image: url("background5.jpg");
+  		background-repeat: no-repeat;
+  		background-attachment: fixed;
+  		background-size: cover;
+		align-items: center;
+		height: 90vh;
+		margin: 0;
+		}
+</style>
+
 </head>
 
-<body>
+<body class="background">
 <h1 class="w3-allerta">My Dog Details</h1>
 <br>
 
 <!-- *Add Name from Cookies* -->
-<h3>Hello, </h3>
+<h3>Hello, <c:out value="${dogsObj.owner_name}" /></h3>
 <br>
 <!-- Dog Card -->
 <div class="w3-card-4 w3-margin w3-padding w3-center" style="width:50%">
@@ -55,9 +68,7 @@
 <h3>See Other Dogs</h3>
 <form method="post" action="AllDogsServlet">
 	<br>
-	<div class="button-container">
-	<input type="submit" value="GO" class="button w3-center"/>
-	</div>
+	<input type="submit" value="GO"/>
 </form>
 </div>
 		
