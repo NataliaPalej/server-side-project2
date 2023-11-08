@@ -1,4 +1,4 @@
-1. Create session page where user logs in with email and password 
+1. Create session page where user logs in with email and password - DONE
 	-> Greeting with their name 
 	-> If user doesn't exist in cookies, it creates them 
 2. Second page
