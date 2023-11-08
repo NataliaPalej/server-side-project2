@@ -1,16 +1,15 @@
 import java.io.IOException;
+import java.sql.*;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
+import javax.servlet.http.*;
 /**
  * Servlet implementation class UserSessionCreate
  */
-@WebServlet("/UserSessionCreate")
+@WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
+		
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -28,21 +27,27 @@ public class LoginServlet extends HttpServlet {
     	String email = request.getParameter("email");
     	String password = request.getParameter("password");
     	
+    	boolean loginSuccessful = false;
+    	
+    	try {
+    		Connection connection = DogsDAO.getConnection();
+    		
+    		loginSuccessful = DogsDAO.checkLogin(email, password);
+  
+            if (loginSuccessful) {
+            	HttpSession session = request.getSession();
+        		session.setAttribute("user", email);
+            	System.out.println("Login successful.");
+                response.sendRedirect("login2.jsp");
+            } else {
+            	System.out.println("Login unsuccessful.");
+                response.sendRedirect("login.jsp");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
 		// Create user object
-		User u = new User(email, password);
-		
-		try {
-			if (UserDAO.checkLogin(email, password) == true) {
-				HttpSession s = request.getSession();
-				s.setAttribute("user", u);
-				request.getRequestDispatcher("index.jsp").forward(request, response);
-				System.out.println("Logged in successfully, going to index.jsp");
-			} else {
-				request.getRequestDispatcher("login.jsp").forward(request, response);
-				System.out.println("Wrong login details, going back to login.jsp");
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}	
-	}
+		//User u = new User(email, password);
+    }
 }
