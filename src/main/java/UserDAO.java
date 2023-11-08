@@ -392,11 +392,11 @@ public enum UserDAO {
 	/**
 	 * Main method
 	 */
-	public static void main(String[] args) throws Exception {
-	    // Call methods to fetch and display all users and dogs
-	    getAllUsers();
-	    getAllDogs();
-	}
+	//public static void main(String[] args) throws Exception {
+	//    // Call methods to fetch and display all users and dogs
+	//    getAllUsers();
+	//    getAllDogs();
+	//}
 	
 	public static void getAllUsers() throws Exception {
 	    List<User> users = instance.getUsers();
@@ -435,5 +435,21 @@ public enum UserDAO {
 	            System.out.println("-------------------------");
 	        }
 	    }
+	}
+	
+	public static boolean checkLogin(String name, String password) throws Exception {
+		List<User> users = instance.getUsers();
+	    
+	    if (users != null) {
+	        for (User user : users) {
+	        	if (user.getEmail().equals(name) && user.getPassword().equals(password)){
+	        		return true;
+	        	}
+	        	else {
+	        		return false;
+	        	}
+	        }
+	    }
+		return false;
 	}
 }
