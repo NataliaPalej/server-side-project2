@@ -17,6 +17,7 @@
 
 <div class="body">
 	<form method = "post" action="login2.jsp" class="w3-container w3-padding">
+	<!-- <form method = "post" action="LoginServlet" class="w3-container w3-padding"> -->
 		<label>Email: </label> 
 		<input type="text" name="email"/>
 		<br>
@@ -26,13 +27,12 @@
 		<input type="submit" value="Login" class="w3-padding-large w3-right w3-hover-purple w3-round-large"/>
 	</form>
 </div>
-		
 	
-	<footer class="w3-padding-small">
-		<p>Natalia Palej<br>
-		Student No: A00279259</p>
-		<p>Email: <a href="mailto:A00279259@student.tus.ie">A00279259@student.tus.ie</a><br>
-		Software Design with Artificial Intelligence for Cloud Computing</p>
+<footer class="w3-padding-small">
+	<p>Natalia Palej<br>
+	Student No: A00279259</p>
+	<p>Email: <a href="mailto:A00279259@student.tus.ie">A00279259@student.tus.ie</a><br>
+	Software Design with Artificial Intelligence for Cloud Computing</p>
 </footer>
 </body>
 </html>
