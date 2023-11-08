@@ -1,0 +1,83 @@
+@charset "ISO-8859-1";
+
+.body{
+	background-image: url("background.png");
+  	background-repeat: no-repeat;
+  	background-attachment: fixed;
+  	background-size: cover;
+  	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	height: 100vh;
+	margin: 0;
+}
+
+h1 {
+	background-color: #4e0a54;
+	color: white;
+	margin: 0;
+	padding: 16px;
+	text-align: center;
+}
+
+.w3-allerta {
+  font-family: "Allerta Stencil", Sans-serif;
+}
+
+form{
+	background-color: white;
+	opacity: 80%;
+	width: 400px;
+	margin: 32px;
+}
+
+input[type="text"] {
+  border: 1px solid;
+  padding: 8px;
+  margin: 8px 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+label{
+	color: #4e0a54;
+	font-weight: bold;
+}
+
+footer {
+	text-align: center;
+  	background-color: #4e0a54;
+  	color: white;
+  	position: fixed;
+  	bottom: 0;
+  	width: 100%;
+}
+
+h3 {
+	color: black;
+	text-align: center;
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.button {
+	padding: 20px 40px;
+    border: none;
+    border-radius: 8px;
+    margin-right: 16px;
+    cursor: pointer;
+}
+
+button:hover{
+	color: white;
+	background-color: #4A235A;
+}
+
+input[type="submit"]:hover {
+	color: white;
+	background-color: #4A235A;
+}
