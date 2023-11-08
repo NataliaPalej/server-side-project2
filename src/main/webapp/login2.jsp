@@ -16,7 +16,8 @@
 <h1 class="w3-allerta">Login Successful</h1>
 
 <div class="body">
-	<form method = "post" action="IndexServlet" class="w3-container w3-padding">
+<form method = "post" action="index.jsp" class="w3-container w3-padding">
+	<!--<form method = "post" action="IndexServlet" class="w3-container w3-padding">-->
 		<input type="submit" value="Go" class="w3-padding-large w3-right w3-hover-purple w3-round-large"/>
 	</form>
 </div>
