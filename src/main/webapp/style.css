@@ -1,11 +1,30 @@
 @charset "ISO-8859-1";
 
+form {
+	margin: 32px 0;
+	position: relative;
+}
+
 h1 {
 	background-color: #4e0a54;
 	color: white;
-	margin: 0;
+	margin: 0px;
 	padding: 16px;
 	text-align: center;
+}
+
+h3 {
+	background-color: #4e0a54;
+	color: white;
+	margin: 16px;
+	padding: 16px;
+	text-align: center;
+}
+
+td {
+	border-width: 0.5px;
+  	border-style: solid;
+  	border-color: #C8C2CB; 
 }
 
 .w3-allerta {
@@ -17,6 +36,7 @@ h1 {
 	opacity: 80%;
 	margin: 32px;
 	margin-bottom: 100px;
+	padding: 16px;
 }
 
 label{
@@ -25,17 +45,15 @@ label{
 }
 
 footer {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
 	text-align: center;
   	background-color: #4e0a54;
   	color: white;
-  	position: fixed;
-  	width: 100%;
 }
 
-h3 {
-	color: black;
-	text-align: center;
-}
 
 .button-container {
     display: flex;
@@ -62,7 +80,7 @@ input[type="submit"] {
   margin-right: 16px;
   cursor: pointer;
   margin: 32px;
-  background-color: white;
+  background-color: #a663c2;
 }
 
 input[type="submit"]:hover {

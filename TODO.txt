@@ -1,19 +1,19 @@
 1. Create session page where user logs in with email and password - DONE
-	-> Greeting with their name 
-			TODO: pass on name based on the email
+	-> Greeting with their name - DONE
+		TODO: pass on name based on the user logged in - DONE
 	-> If user doesn't exist in cookies, it creates them 
 2. Second page - DONE
-	-> User account: they see dogs associated with them 
-			TODO: LoginSuccessfulServlet -> deal with displaying details of dog
+	-> User account: they see dogs associated with them - DONE
+		TODO: LoginSuccessfulServlet -> deal with displaying details of dog - DONE
 3. Third page - DONE
-	-> User sees other people's name and their dog name/breed/age
-			TODO: OtherDogsServlet -> deal with displaying all dogs 
+	-> User sees other people's name and their dog name/breed/age - DONE
+		TODO: OtherDogsServlet -> deal with displaying all dogs - DONE
 
-
-
-4. Create page that will allow user to update their own dog
+4. Create page that will allow user to update their own dog - DONE
 	-> UpdateSrvlet -> deals with update method
 	
-
-5. Create delete page 
+5. Create delete page  - DONE
 	-> DeleteServlet -> deals with delete method
+
+6. Logout button 
+	-> LogoutServlet -> deals with ending session 
