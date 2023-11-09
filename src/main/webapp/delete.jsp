@@ -29,10 +29,9 @@
 <h1 class="w3-allerta">Login Successful</h1>
 
 <div class="w3-center">
-<form method = "post" action="IndexServlet">
+<form method = "post" action="deleteServlet">
 	<br>
-<!--<form method = "post" action="index.jsp" class="w3-container w3-padding">-->
-	<input type="submit" value="GO" class="w3-round-large button"/>
+	<input type="submit" value="DELETE" class="w3-round-large button"/>
 </form>
 </div>
 		
