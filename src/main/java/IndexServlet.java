@@ -59,7 +59,9 @@ public class IndexServlet extends HttpServlet {
                     Dogs userDog = dogs.get(0); 
 
                     String owner_name = userDog.getOwner_name();
+                    String owner_password = userDog.getOwner_password();
                     session.setAttribute("owner_name", owner_name);
+                    session.setAttribute("owner_password", owner_password);
                     session.setAttribute("userDog", userDog);
                     request.setAttribute("dogDetails", dogs);
 

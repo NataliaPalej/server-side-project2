@@ -31,12 +31,12 @@
 		<form method = "post" action="LoginServlet">
 		<!-- <form method = "post" action="LoginServlet" class="w3-container w3-padding"> -->
 			<label>Email: </label> 
-			<input type="text" name="email"/>
+			<input type="text" name="email" class="inputText"/>
 			<br>
 			<label>Password</label> 
-			<input type="text" name="password"/>
+			<input type="text" name="password" class="inputText"/>
 			<br>
-			<input type="submit" value="Login" class="w3-padding-large w3-right w3-round-large"/>
+			<input type="submit" value="Login" class="w3-right w3-round-large inputSubmit"/>
 		</form>
 	</div>
 

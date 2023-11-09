@@ -74,43 +74,47 @@
 <br>
 <br>
 
-<div class="w3-container"> 
-
-	<div class="w3-container">
+<div class="w3-container">
 		<h3 class="w3-half">MENU:</h3>
+</div>
+
+<div class="w3-bar-block">
+	<!-- ADD NEW DOGS -->
+	<div class="w3-bar-item">
+		<form method="post" action="add.jsp">
+			<input type="submit" value="Add New Dog" class="menuType"/>
+		</form>
 	</div>
-	
-	<!-- GET ALL DOGS -->
-		<div class="w3-quarter">
-			<form method="post" action="AllDogsServlet">
-				<input type="submit" value="See Other Dogs"/>
-			</form>
-		</div>
 	
 	<!-- UPDATE dog -->
-		<div class="w3-quarter">
-			<form method="post" action="update.jsp">
-				<input type="submit" value="Update Your Dog"/>
-			</form>
-		</div>
+	<div class="w3-bar-item">
+		<form method="post" action="update.jsp">
+			<input type="submit" value="Update Dog" class="menuType"/>
+		</form>
+	</div>
 		
 	<!-- DELETE dog -->
-		<div class="w3-quarter">
-			<form method="post" action="delete.jsp">
-				<input type="submit" value="Delete Your Dog"/>
-			</form>
-		</div>
+	<div class="w3-bar-item">
+		<form method="post" action="delete.jsp">
+			<input type="submit" value="Delete Dog" class="menuType"/>
+		</form>
 	</div>
+		
+	<!-- GET ALL DOGS -->
+	<div class="w3-bar-item">
+		<form method="post" action="AllDogsServlet">
+			<input type="submit" value="See Other Dogs" class="menuType"/>
+		</form>
+	</div>
+</div>
 	
-	<!-- LOGOUT and CLOSE SESSION -->
-	<div class="w3-container">
-		<div class="w3-quarter">
-			<form method="post" action="logout.jsp">
-				<input type="submit" value="LOGOUT"/>
-			</form>
-		</div>
+<!-- LOGOUT and CLOSE SESSION -->
+<div class="w3-container">
+	<div class="w3-quarter">
+		<form method="post" action="logoutServlet">
+			<input type="submit" value="LOGOUT" class="menuType"/>
+		</form>
 	</div>
-
 </div>
 		
 <!-- Footer, FIX SO IT DOESNT COVER PAGE CONTENT -->
