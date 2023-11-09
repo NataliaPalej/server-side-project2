@@ -4,7 +4,7 @@ import java.util.List;
 
 public enum DogsDAO {
 	instance;
-	List<Dogs> dogsList;
+	List<Dogs> dogsList = new ArrayList<Dogs>();
 	
 	static Connection getConnection() throws SQLException, ClassNotFoundException{
 		String DRIVER_URL = "jdbc:hsqldb:hsql://localhost/oneDB";
@@ -76,7 +76,7 @@ public enum DogsDAO {
 		query.setString(1, newDog.getName());
 		query.setString(2, newDog.getAge());
 		query.setString(3, newDog.getBreed());
-		query.setString(4, newDog.getColor());
+		query.setString(4, newDog.getColour());
 		query.setString(5, newDog.getActivity());
 		query.setString(6, newDog.getMaintenance());
 		query.setString(7, newDog.getOwner_email());
@@ -124,7 +124,7 @@ public enum DogsDAO {
 		     dog.setName(dogName);
 		     dog.setAge(age);
 		     dog.setBreed(breed);
-		     dog.setColor(colour);
+		     dog.setColour(colour);
 		     dog.setActivity(activity);
 		     dog.setMaintenance(maintenance);
 		     dog.setOwner_email(owner_email);
@@ -289,12 +289,12 @@ public enum DogsDAO {
 		        dog.setName(resultSet.getString("name"));
 		        dog.setAge(resultSet.getString("age"));
 		        dog.setBreed(resultSet.getString("breed"));
-		        dog.setColor(resultSet.getString("colour"));
+		        dog.setColour(resultSet.getString("colour"));
 		        dog.setActivity(resultSet.getString("activity"));
 		        dog.setMaintenance(resultSet.getString("maintenance"));
-		        dog.setOwner_email("owner_email");
-		        dog.setOwner_name("owner_name");
-		        dog.setOwner_password("owner_password");
+		        dog.setOwner_email(resultSet.getString("owner_email"));
+		        dog.setOwner_name(resultSet.getString("owner_name"));
+		        dog.setOwner_password(resultSet.getString("owner_password"));
 		        dogsList.add(dog);
 		        }
 		}finally {
@@ -304,59 +304,48 @@ public enum DogsDAO {
 			}
 		return dogsList;
 	}
-		
-	/**
-	* Main method
-	*/
-	//public static void main(String[] args) throws Exception {
-	//	// Call methods to fetch and display all dogs
-	//	getAllDogs();
-	//}
-	
-//	public static void getAllDogs() throws Exception {
-//		List<Dogs> dogs = instance.getDogs();
-//		if (dogs != null) {
-//			for (Dogs dog : dogs) {
-//				System.out.println("Dog ID: " + dog.getID());
-//				System.out.println("Name: " + dog.getName());
-//		        System.out.println("Age: " + dog.getAge());
-//		        System.out.println("Breed: " + dog.getBreed());
-//		        System.out.println("Color: " + dog.getColor());
-//		        System.out.println("Activity: " + dog.getActivity());
-//		        System.out.println("Maintenance: " + dog.getMaintenance());
-//		        System.out.println("Owner name: " + dog.getOwner_name());
-//		        System.out.println("Owner email: " + dog.getOwner_email());
-//		       System.out.println("-------------------------");
-//		   }
-//		}
-//	}
 
-	List<Dogs> getDogByUserEmail(String email) throws SQLException, ClassNotFoundException {
+	List<Dogs> getDogByEmail(String email) throws SQLException, ClassNotFoundException {
 		Connection connection = getConnection();
 
-		String selectQuery = "SELECT * FROM dogs WHERE owner_email = ?"; 
+		String selectQuery = "SELECT * FROM dogs WHERE owner_email = ?";
 		PreparedStatement statement = connection.prepareStatement(selectQuery);
 
 		statement.setString(1, email);
 		ResultSet resultSet = statement.executeQuery();
 
 		while (resultSet.next()) {
-			long dogId = resultSet.getLong("id");
-		    String dogName = resultSet.getString("name");
-		    String age = resultSet.getString("age");
-		    String breed = resultSet.getString("breed");
-		    String colour = resultSet.getString("colour");
-		    String activity = resultSet.getString("activity");
-		    String maintenance = resultSet.getString("maintenance");
-		    String owner_name = resultSet.getString("owner_name");
-		    String owner_email = resultSet.getString("owner_email");
-		        
-		    //System.out.println("\tGET DOG:\t");
-		    System.out.println("Dog ID: " + dogId);
-		    System.out.println("Name: " + dogName + "\tAge: " + age + "\nBreed: " + breed + "\tColor: " 
-		        				+ colour + "\nActivity: " + activity + "\tMaintenance: " + maintenance 
-		        				+ "\nOwner: " + owner_name + "\nOwner email: " + owner_email);
-		    }
+			Dogs dog = new Dogs();
+			dog.setID(resultSet.getInt("id"));
+	        dog.setName(resultSet.getString("name"));
+	        dog.setAge(resultSet.getString("age"));
+	        dog.setBreed(resultSet.getString("breed"));
+	        dog.setColour(resultSet.getString("colour"));
+	        dog.setActivity(resultSet.getString("activity"));
+	        dog.setMaintenance(resultSet.getString("maintenance"));
+	        dog.setOwner_name(resultSet.getString("owner_name"));
+	        dog.setOwner_email(resultSet.getString("owner_email"));
+	        dog.setOwner_password(resultSet.getString("owner_password"));
+	        
+	        
+	        boolean dogExists = false;
+	        for (Dogs existingDog : dogsList) {
+	            if (checkDog(existingDog, dog)) {
+	                dogExists = true;
+	                System.out.println("Dog already exists.");
+	                break;
+	            }
+	        }
+	        if (!dogExists) {
+	            dogsList.add(dog);
+	            System.out.println("\tGET DOG:\t" + dog.printDetails());
+	        }
+		}
 		return dogsList;
 	}
+
+private boolean checkDog(Dogs dog1, Dogs dog2) {
+    return dog1.getName().equals(dog2.getName()) &&
+           dog1.getID() == (dog2.getID());
+    }
 }
