@@ -11,7 +11,7 @@
 
 <script>
 function goBack() {
-    window.location.href = "index.jsp";
+	window.location.href = "IndexServlet";
 }
 </script>
 
@@ -34,8 +34,8 @@ function goBack() {
 <h1 class="w3-allerta">All Dogs</h1>
 <br>
 
-<!-- *Add Name from Cookies* -->
-<h3>Hello, </h3>
+<!-- *Add Name from session* -->
+<h3>Hello, <c:out value="${owner_name}" /></h3>
 <br>
 
 <!-- Dogs Details represented in table -->
@@ -50,7 +50,7 @@ function goBack() {
 			<th>Maintenance</th>
 			<th>Owner</th>
 		</tr>
-		<c:forEach items="${dogsList}" var="dogObj">
+		<c:forEach items="${dogDetails}" var="dogObj">
 		<tr>
 			<td class=""><c:out value="${dogObj.name}" /></td>
 			<td class=""><c:out value="${dogObj.age}" /></td>
@@ -58,7 +58,7 @@ function goBack() {
 			<td class=""><c:out value="${dogObj.colour}" /></td>
 			<td class=""><c:out value="${dogObj.activity}" /></td>
 			<td class=""><c:out value="${dogObj.maintenance}" /></td>
-			<td class=""><c:out value="${dogObj.owner}" /></td>
+			<td class=""><c:out value="${dogObj.owner_name}" /></td>
 		</tr>
 		</c:forEach>
 	</table>
