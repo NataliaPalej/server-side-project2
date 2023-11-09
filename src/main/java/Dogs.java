@@ -1,13 +1,13 @@
 public class Dogs {
 	
-	private String age, name, breed, color, activity, maintenance, owner_email, owner_name, owner_password;
+	private String age, name, breed, colour, activity, maintenance, owner_email, owner_name, owner_password;
 	private int id;
 	
-	public Dogs(String name, String age, String breed, String color, String activity, String maintenance, String owner_name, String email, String password) {
+	public Dogs(String name, String age, String breed, String colour, String activity, String maintenance, String owner_name, String email, String password) {
 		this.name = name;
 		this.age = age;
 		this.breed = breed;
-		this.color = color;
+		this.colour = colour;
 		this.activity = activity;
 		this.maintenance = maintenance;
 		this.owner_email = email;
@@ -35,12 +35,12 @@ public class Dogs {
 		this.breed = breed;
 	}
 
-	public String getColor() {
-		return color;
+	public String getColour() {
+		return colour;
 	}
 
-	public void setColor(String color) {
-		this.color = color;
+	public void setColour(String colour) {
+		this.colour = colour;
 	}
 
 	public String getMaintenance() {
@@ -97,5 +97,13 @@ public class Dogs {
 
 	public void setOwner_password(String owner_password) {
 		this.owner_password = owner_password;
+	}
+	
+	public String printDetails() {
+		return 
+				"\nDOG DETAILS:\nID: " + this.getID() + "\nName: " + this.getName() + "\nBreed: " + this.getBreed() 
+				+ "\nColor: " + this.getColour() + "\nActivity: " + this.getActivity() 
+				+ "\nMaintenance: " + this.getMaintenance()+ "\nOwner Name: " + this.getOwner_name() 
+				+ "\nEmail: " + this.getOwner_email() + "\nPassword: " + this.getOwner_password() + "\n";
 	}
 }
