@@ -65,6 +65,9 @@
 				<td><c:out value="${dogObj.colour}" /></td>
 				<td><c:out value="${dogObj.activity}" /></td>
 				<td><c:out value="${dogObj.maintenance}" /></td>
+				<!--****** Dodac edit button at the end of each row -->
+				<!-- Create method that will go into update page 
+				and will fetch dog details from that row by ID *****-->
 			</tr>
 			</c:forEach>
 		</table>

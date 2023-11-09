@@ -11,6 +11,9 @@
 
 4. Create page that will allow user to update their own dog - DONE
 	-> UpdateSrvlet -> deals with update method
+<!--****** Dodac edit button at the end of each row -->
+				<!-- Create method that will go into update page 
+				and will fetch dog details from that row by ID *****-->
 	
 5. Create delete page  - DONE
 	-> DeleteServlet -> deals with delete method
