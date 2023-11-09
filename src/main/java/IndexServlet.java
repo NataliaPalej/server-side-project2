@@ -17,26 +17,67 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/IndexServlet")
 public class IndexServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Handle GET requests here, e.g., to display the page with dog details.
+        // Retrieve dogs and session attributes as needed.
+		HttpSession session = request.getSession(false); 
+		
+		try {
+			if (session != null) {
+	            // Get the user's email from the session
+	            String userEmail = (String) session.getAttribute("user");
+	            List<Dogs> dogDetails = DogsDAO.instance.getDogByEmail(userEmail);
+	            request.setAttribute("dogDetails", dogDetails);
+	            request.getRequestDispatcher("index.jsp").forward(request, response);
+			} else {
+	            System.out.println("No session found. You have to log in.");
+	            request.getRequestDispatcher("login.jsp").forward(request, response);
+	        }
+		} catch (Exception e) {
+            System.out.println("Error couldn't retrieve dog's details.");
+            e.printStackTrace();
+        }
+		
+    }
+	
        
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-	    String userEmail = (String) session.getAttribute("email");
-	    
-	    //if (userEmail != null) {
-	        // Get dogs associated with the logged-in user's email
-			try {
-				List<Dogs> userDog = DogsDAO.instance.getDogByUserEmail(userEmail);
-				
-				// Add the list of dogs to the request
-		        request.setAttribute("dogsList", userDog);
+		// Use existing session or return null if no session exists
+		HttpSession session = request.getSession(false); 
+		
+		if (session != null) {
+            // Get the user's email from the session
+            String userEmail = (String) session.getAttribute("user");
 
-		        request.getRequestDispatcher("index.jsp").forward(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}       
-	    //} else {
-	    //    response.sendRedirect("login.jsp");
-	    //}
-	}
+            try {
+                List<Dogs> dogs = DogsDAO.instance.getDogByEmail(userEmail);
 
+                if (dogs != null && !dogs.isEmpty()) {
+                	// Get the user's dog from the list
+                    Dogs userDog = dogs.get(0); 
+
+                    String owner_name = userDog.getOwner_name();
+                    session.setAttribute("owner_name", owner_name);
+                    session.setAttribute("userDog", userDog);
+                    request.setAttribute("dogDetails", dogs);
+
+                    System.out.println("Dog details: " + userDog.getName());
+                    System.out.println("Dog was successfully fetched.\n");
+                    System.out.println(userDog.getName() + "\n");
+
+                    request.getRequestDispatcher("index.jsp").forward(request, response);
+                } else {
+                    System.out.println("Error, couldn't fetch dog details");
+                }
+            } catch (Exception e) {
+                System.out.println("Error couldn't retrieve dog's details.");
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("No session found. You have to log in.");
+            request.getRequestDispatcher("login.jsp").forward(request, response);
+        }
+    }
 }

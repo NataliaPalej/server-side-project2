@@ -28,8 +28,19 @@
 <h1 class="w3-allerta">My Dog Details</h1>
 <br>
 
-<!-- *Add Name from Cookies* -->
-<h3>Hello, <c:out value="${dogsObj.owner_name}" /></h3>
+<!-- Setting session attributes -->
+<c:set var="name" value="${userDogsList[0].name}" scope="session" />
+<c:set var="age" value="${userDogsList[0].age}" scope="session" />
+<c:set var="breed" value="${userDogsList[0].breed}" scope="session" />
+<c:set var="color" value="${userDogsList[0].colour}" scope="session" />
+<c:set var="activity" value="${userDogsList[0].activity}" scope="session" />
+<c:set var="maintenance" value="${userDogsList[0].maintenance}" scope="session" />
+
+<div class="w3-container">
+	<c:set var="owner_name" value="${userDogsList[0].owner_name}" scope="session" />
+	<h3 class="w3-half">Hello, <c:out value="${owner_name}" /> </h3>
+</div>
+
 <br>
 <!-- Dog Card -->
 <div class="w3-card-4 w3-margin w3-padding w3-center" style="width:50%">
@@ -46,14 +57,14 @@
 				<th>Activity</th>
 				<th>Maintenance</th>
 			</tr>
-			<c:forEach items="${dogsList}" var="dogObj">
-			<tr>
-				<td class=""><c:out value="${dogObj.name}" /></td>
-				<td class=""><c:out value="${dogObj.age}" /></td>
-				<td class=""><c:out value="${dogObj.breed}" /></td>
-				<td class=""><c:out value="${dogObj.colour}" /></td>
-				<td class=""><c:out value="${dogObj.activity}" /></td>
-				<td class=""><c:out value="${dogObj.maintenance}" /></td>
+			<c:forEach items="${dogDetails}" var="dogObj">
+			<tr >
+				<td><c:out value="${dogObj.name}" /></td>
+				<td><c:out value="${dogObj.age}" /></td>
+				<td><c:out value="${dogObj.breed}" /></td>
+				<td><c:out value="${dogObj.colour}" /></td>
+				<td><c:out value="${dogObj.activity}" /></td>
+				<td><c:out value="${dogObj.maintenance}" /></td>
 			</tr>
 			</c:forEach>
 		</table>
@@ -63,26 +74,46 @@
 <br>
 <br>
 
-<div>
-<div class="w3-half">
-<h3>See Other Dogs</h3>
-<form method="post" action="AllDogsServlet">
-	<br>
-	<input type="submit" value="GO"/>
-</form>
-</div>
+<div class="w3-container"> 
 
-<div class="w3-half">
-<h3>Update Your Dog</h3>
-<form method="post" action="update.jsp">
-	<br>
-	<input type="submit" value="Click"/>
-</form>
-</div>
+	<div class="w3-container">
+		<h3 class="w3-half">MENU:</h3>
+	</div>
+	
+	<!-- GET ALL DOGS -->
+		<div class="w3-quarter">
+			<form method="post" action="AllDogsServlet">
+				<input type="submit" value="See Other Dogs"/>
+			</form>
+		</div>
+	
+	<!-- UPDATE dog -->
+		<div class="w3-quarter">
+			<form method="post" action="update.jsp">
+				<input type="submit" value="Update Your Dog"/>
+			</form>
+		</div>
+		
+	<!-- DELETE dog -->
+		<div class="w3-quarter">
+			<form method="post" action="delete.jsp">
+				<input type="submit" value="Delete Your Dog"/>
+			</form>
+		</div>
+	</div>
+	
+	<!-- LOGOUT and CLOSE SESSION -->
+	<div class="w3-container">
+		<div class="w3-quarter">
+			<form method="post" action="logout.jsp">
+				<input type="submit" value="LOGOUT"/>
+			</form>
+		</div>
+	</div>
 
 </div>
 		
-<!-- Footer, *change background* -->
+<!-- Footer, FIX SO IT DOESNT COVER PAGE CONTENT -->
 <footer class="w3-padding-small">
 	<p>Natalia Palej<br>
 	Student No: A00279259</p>

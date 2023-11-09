@@ -28,10 +28,11 @@
 <body class="background">
 <h1 class="w3-allerta">Login Successful</h1>
 
+<h3>Welcome, ${userDogsList[0].owner_name}</h3>
+
 <div class="w3-center">
 <form method = "post" action="IndexServlet">
 	<br>
-<!--<form method = "post" action="index.jsp" class="w3-container w3-padding">-->
 	<input type="submit" value="GO" class="w3-round-large button"/>
 </form>
 </div>

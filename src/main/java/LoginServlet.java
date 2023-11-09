@@ -1,5 +1,6 @@
 import java.io.IOException;
 import java.sql.*;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,12 +32,16 @@ public class LoginServlet extends HttpServlet {
     	
     	try {
     		Connection connection = DogsDAO.getConnection();
-    		
     		loginSuccessful = DogsDAO.checkLogin(email, password);
   
             if (loginSuccessful) {
+            	// Fetch dog details
+            	List<Dogs> userDogsList = DogsDAO.instance.getDogByEmail(email);
+            	
+            	// Create session with dogs properties in it
             	HttpSession session = request.getSession();
-        		session.setAttribute("user", email);
+        		session.setAttribute("userDogsList", userDogsList);
+        		
             	System.out.println("Login successful.");
                 response.sendRedirect("login2.jsp");
             } else {
@@ -46,8 +51,5 @@ public class LoginServlet extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-		// Create user object
-		//User u = new User(email, password);
     }
 }
