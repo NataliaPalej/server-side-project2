@@ -15,8 +15,8 @@ h1 {
 .form{
 	background-color: white;
 	opacity: 80%;
-	width: 400px;
 	margin: 32px;
+	margin-bottom: 100px;
 }
 
 label{
@@ -29,7 +29,6 @@ footer {
   	background-color: #4e0a54;
   	color: white;
   	position: fixed;
-  	bottom: 0;
   	width: 100%;
 }
 
@@ -78,3 +77,4 @@ input[type="text"] {
   width: 100%;
   box-sizing: border-box;
 }
+

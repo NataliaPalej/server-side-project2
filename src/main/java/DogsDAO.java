@@ -172,6 +172,47 @@ public enum DogsDAO {
 		    }
 	}
 	
+	public void updateDog(int dogID) throws Exception {
+		Connection connection = getConnection();
+
+		String selectQuery = "SELECT * from DOGS where id = ?";
+		PreparedStatement statement = connection.prepareStatement(selectQuery);
+
+		statement.setInt(1, dogID);
+		ResultSet resultSet = statement.executeQuery();
+
+		// FILL IN THE FIELDS WITH THE DATA FROM DATABASE AND ALLOW USER TO UPDATE ANY OF THEM
+		while (resultSet.next()) {
+			long dogId = resultSet.getLong("id");
+		    String name = resultSet.getString("name");
+		    String age = resultSet.getString("age");
+		    String breed = resultSet.getString("breed");
+		    String colour = resultSet.getString("colour");
+		    String activity = resultSet.getString("activity");
+		    String maintenance = resultSet.getString("maintenance");
+		    String owner_email = resultSet.getString("owner_email");
+		    String owner_name = resultSet.getString("owner_name");
+		    String owner_password = resultSet.getString("owner_password");
+		
+		String query = "UPDATE \"PUBLIC\".\"DOGS\" SET name = ?, age = ?, breed = ?, colour = ?, activity = ?, maintenance = ?, owner_email = ?, owner_name = ?, owner_password = ?  WHERE id = ?";
+			
+		PreparedStatement statement2 = connection.prepareStatement(query);
+		statement2.setString(1, name);
+		statement2.setString(2, age);
+		statement2.setString(3, breed);
+		statement2.setString(4, colour);
+		statement2.setString(5, activity);
+		statement2.setString(6, maintenance);
+		statement2.setString(7, owner_email);
+		statement2.setString(8, owner_name);
+		statement2.setString(9, owner_password);
+		statement2.setInt(10, dogID);
+		statement2.executeUpdate();
+		
+		System.out.println("Dog " + name + " was successfully updated.");
+		}
+	}
+	
 	public void updateDogAge(int dogID, int newAge) throws Exception {
 		Connection connection = getConnection();
 		String updateAge = "UPDATE \"PUBLIC\".\"DOGS\" SET age = ? WHERE id = ?";

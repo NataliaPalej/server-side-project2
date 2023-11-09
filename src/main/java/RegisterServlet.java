@@ -67,7 +67,9 @@ public class RegisterServlet extends HttpServlet {
 		try {
 			DogsDAO.instance.insertDog(dog);
 			request.getRequestDispatcher("login.jsp").forward(request, response);
+			System.out.println("Dog successfully registered.");
 		} catch (Exception e1) {
+			System.out.println("Couldn't register new dog.");
 			e1.printStackTrace();
 		}
 	}

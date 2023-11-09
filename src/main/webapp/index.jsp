@@ -64,12 +64,22 @@
 <br>
 
 <div>
-
+<div class="w3-half">
 <h3>See Other Dogs</h3>
 <form method="post" action="AllDogsServlet">
 	<br>
 	<input type="submit" value="GO"/>
 </form>
+</div>
+
+<div class="w3-half">
+<h3>Update Your Dog</h3>
+<form method="post" action="update.jsp">
+	<br>
+	<input type="submit" value="Click"/>
+</form>
+</div>
+
 </div>
 		
 <!-- Footer, *change background* -->

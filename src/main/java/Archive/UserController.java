@@ -21,17 +21,15 @@ public class UserController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// Create userList which uses instance of UserDAO and returns with list()
-		List<Dogs> dogsList = null;
+//		List<Dogs> dogsList = null;
 		try {
-			dogsList = DogsDAO.instance.userList();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
+//			dogsList = DogsDAO.instance.userList();
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 		// Add list of users attributes to the request
-		request.setAttribute("listOfDogs", dogsList);
+//		request.setAttribute("listOfDogs", dogsList);
 		
 		// Forward updated request and response to display.jsp view
 		// request.getRequestDispatcher("displayList.jsp").forward(request, response);

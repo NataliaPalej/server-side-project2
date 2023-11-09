@@ -6,7 +6,11 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src/main/java"/>
-	<classpathentry kind="lib" path="C:/Users/Palej/OneDrive/Desktop/Software Design with AI for Cloud/Year_3/server-side-web-dev-labs/Assessment/server-side-project2/lib/hsqldb.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Palej/OneDrive/Desktop/Software Design with AI for Cloud/Year_3/server-side-web-dev-labs/Assessment/server-side-project2/lib/hsqldb.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/NewTomcat">

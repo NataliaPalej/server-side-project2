@@ -44,16 +44,16 @@ public class QueryClass {
             // Insert dog
             System.out.println("\n\tINSERT QUERY\t");
             try {
-            	Dogs newDog = new Dogs();
-            	newDog.setName("Buddy");
-            	newDog.setAge(10);
-            	newDog.setBreed("Pomeralian");
-            	newDog.setColor("Ginger");
-            	newDog.setActivity("high");
-            	newDog.setMaintenance("medium");
-            	String userName = "Natalia";
+//            	//Dogs newDog = new Dogs();
+//            	newDog.setName("Buddy");
+//            	newDog.setAge(10);
+//            	newDog.setBreed("Pomeralian");
+//            	newDog.setColor("Ginger");
+//            	newDog.setActivity("high");
+//            	newDog.setMaintenance("medium");
+//            	String userName = "Natalia";
             	
-            	userDAO.insertDog(newDog, userName);
+//            	userDAO.insertDog(newDog, userName);
             } catch (Exception e) {
             	System.out.println("Couldn't insert dog.\n" + e.getMessage());
             }

@@ -29,7 +29,7 @@
 <h1 class="w3-allerta">Dogs Application</h1>
 
 <div class="body">
-	<form method = "post" action="login2.jsp" class="w3-container w3-padding">
+	<form method = "post" action="LoginServlet" class="w3-container w3-padding">
 	<!-- <form method = "post" action="LoginServlet" class="w3-container w3-padding"> -->
 		<label>Email: </label> 
 		<input type="text" name="email"/>

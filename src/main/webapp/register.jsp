@@ -12,24 +12,25 @@
 <title>Natalia Palej A00279259</title>
 
 <style>
-	.background{
+	.body{
 		background-image: url("background4.jpg");
   		background-repeat: no-repeat;
   		background-attachment: fixed;
   		background-size: cover;
 		align-items: center;
-		height: 90vh;
-		margin: 0;
+		min-height: 400px;
+		margin-bottom: 100px;
+   		clear: both;
 		}
 </style>
 
 
 </head>
 
-<body class="background">
+<body class="body">
 <h1 class="w3-allerta">Register Dog</h1>
 
-<div class="body w3-right">
+<div class="w3-right">
 	<form method = "post" action="RegisterServlet" class="w3-container w3-padding form">
 		<label>Dog Name: </label> 
 		<input type="text" name="name"/>
@@ -62,7 +63,7 @@
 	</form>
 </div>
 	
-<footer class="w3-padding-small">
+<footer>
 	<p>Natalia Palej<br>
 	Student No: A00279259</p>
 	<p>Email: <a href="mailto:A00279259@student.tus.ie">A00279259@student.tus.ie</a><br>
