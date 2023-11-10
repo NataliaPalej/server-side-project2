@@ -1,15 +1,7 @@
-
-
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 
 /**
  * Servlet implementation class RegisterServlet
@@ -41,14 +33,14 @@ public class RegisterServlet extends HttpServlet {
 		String owner_email = request.getParameter("owner_email");
 		String owner_password = request.getParameter("owner_password");
 		
-		if (name.isEmpty() | age.isEmpty() | breed.isEmpty() | colour.isEmpty() | activity.isEmpty() | maintenance.isEmpty()) {
+		if (name.isEmpty() || age.isEmpty() || breed.isEmpty() || colour.isEmpty() || activity.isEmpty() || maintenance.isEmpty()) {
 			System.out.println("\nAll fields must be filled in!\n");
 			request.getRequestDispatcher("register.jsp").forward(request, response);
 		} else {
-			Dogs dog = new Dogs(name, age, breed, colour, activity, maintenance, owner_name, owner_email, owner_password);
+			Dog dog = new Dog(name, age, breed, colour, activity, maintenance, owner_name, owner_email, owner_password);
 			try {
 				// Add dog to the database
-				DogsDAO.instance.insertDog(dog);
+				DogDAO.instance.insertDog(dog);
 				request.getRequestDispatcher("login.jsp").forward(request, response);
 				System.out.println("Dog " + name + " successfully registered.\n");
 			} catch (Exception e1) {

@@ -1,11 +1,7 @@
-
-
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -27,8 +23,8 @@ public class RegisterUser extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			int owners_count = DogsDAO.instance.ownersCount();
-			int dogs_count = DogsDAO.instance.dogsCount();
+			int owners_count = DogDAO.instance.ownersCount();
+			int dogs_count = DogDAO.instance.dogsCount();
 			
 			HttpSession session = request.getSession();
 			// Set counts as attributes in request

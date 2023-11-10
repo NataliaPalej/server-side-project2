@@ -2,9 +2,9 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public enum DogsDAO {
+public enum DogDAO {
 	instance;
-	List<Dogs> dogsList = new ArrayList<Dogs>();
+	List<Dog> dogsList = new ArrayList<Dog>();
 	
 	static Connection getConnection() throws SQLException, ClassNotFoundException{
 		String DRIVER_URL = "jdbc:hsqldb:hsql://localhost/oneDB";
@@ -23,7 +23,6 @@ public enum DogsDAO {
 	
 	
 	public static boolean checkLogin(String email, String password) throws Exception {
-		
 		Connection connection = null;
 	    PreparedStatement preparedStatement = null;
 	    ResultSet resultSet = null;
@@ -65,7 +64,7 @@ public enum DogsDAO {
 	 * @return 
 	 * @return 
 	 */
-	public void insertDog(Dogs newDog) throws Exception {
+	public void insertDog(Dog newDog) throws Exception {
 		// Get connection
 		Connection connection = getConnection();
 		
@@ -86,7 +85,7 @@ public enum DogsDAO {
 		// Execute the statement
 		query.executeUpdate();
 		
-		System.out.println("insertDog(): Dog " + newDog.getName() + " was successfully created.\n");
+		System.out.println("insertDog(): Dog " + newDog.getName() + " was successfully created.");
 	}
 	
 	public void deleteDog(int dogID) throws Exception{
@@ -98,90 +97,62 @@ public enum DogsDAO {
 		System.out.println("deleteDog(): Dog " + dogID + " was successfully deleted.\n");
 	}
 		
-	public List<Dogs> getDogs() throws Exception {
-	    Connection connection = getConnection();
-	    // Create a list to store dogs
-	    List<Dogs> dogsList = new ArrayList<Dogs>(); 
-	    
-	    Statement statement = connection.createStatement();
-		ResultSet resultSet = statement.executeQuery("SELECT * from DOGS");
-
-		while (resultSet.next()) {
-			long dogId = resultSet.getLong("id");
-			String dogName = resultSet.getString("name");
-			String age = resultSet.getString("age");
-		    String breed = resultSet.getString("breed");
-		    String colour = resultSet.getString("colour");
-		    String activity = resultSet.getString("activity");
-		    String maintenance = resultSet.getString("maintenance");
-		    String owner_email = resultSet.getString("owner_email");
-		    String owner_name = resultSet.getString("owner_name");
-		    String owner_password = resultSet.getString("owner_password");
-
-		     // Create a Dogs object and add it to the list
-		     Dogs dog = new Dogs();
-		     dog.setID((int) dogId);
-		     dog.setName(dogName);
-		     dog.setAge(age);
-		     dog.setBreed(breed);
-		     dog.setColour(colour);
-		     dog.setActivity(activity);
-		     dog.setMaintenance(maintenance);
-		     dog.setOwner_email(owner_email);
-		     dog.setOwner_name(owner_name);
-		     dog.setOwner_password(owner_password);
-		     dogsList.add(dog);
-
-		     System.out.println("getDogs():\nDog ID: " + dogId + "\nName: " + dogName);
-		     System.out.println("\tAge: " + age + "\nBreed: " + breed + "\tColor: "	+ colour 
-		    		 + "\nActivity: " + activity + "\tMaintenance: " + maintenance 
-		        	+ "\nOwner Details: \nName: " + owner_name + "\tEmail: " + owner_email 
-		        	+ "\tPassword: " + owner_password + "\n");
-		     }
-		return dogsList;
-	}
+//	public List<Dog> getDogs() throws Exception {
+//	    Connection connection = getConnection();
+//	    // Create a list to store dogs
+//	    List<Dog> dogsList = new ArrayList<Dog>(); 
+//	    
+//	    Statement statement = connection.createStatement();
+//		ResultSet resultSet = statement.executeQuery("SELECT * from DOGS");
+//
+//		while (resultSet.next()) {
+//			long dogId = resultSet.getLong("id");
+//			String dogName = resultSet.getString("name");
+//			String age = resultSet.getString("age");
+//		    String breed = resultSet.getString("breed");
+//		    String colour = resultSet.getString("colour");
+//		    String activity = resultSet.getString("activity");
+//		    String maintenance = resultSet.getString("maintenance");
+//		    String owner_email = resultSet.getString("owner_email");
+//		    String owner_name = resultSet.getString("owner_name");
+//		    String owner_password = resultSet.getString("owner_password");
+//
+//		     // Create a Dogs object and add it to the list
+//		     Dog dog = new Dog();
+//		     dog.setID((int) dogId);
+//		     dog.setName(dogName);
+//		     dog.setAge(age);
+//		     dog.setBreed(breed);
+//		     dog.setColour(colour);
+//		     dog.setActivity(activity);
+//		     dog.setMaintenance(maintenance);
+//		     dog.setOwner_email(owner_email);
+//		     dog.setOwner_name(owner_name);
+//		     dog.setOwner_password(owner_password);
+//		     dogsList.add(dog);
+//
+//		     System.out.println("getDogs():\nDog ID: " + dogId + "\nName: " + dogName);
+//		     System.out.println("\tAge: " + age + "\nBreed: " + breed + "\tColor: "	+ colour 
+//		    		 + "\nActivity: " + activity + "\tMaintenance: " + maintenance 
+//		        	+ "\nOwner Details: \nName: " + owner_name + "\tEmail: " + owner_email 
+//		        	+ "\tPassword: " + owner_password + "\n");
+//		     }
+//		return dogsList;
+//	}
 	
-	public void getDog(int dogID) throws Exception {
+	public Dog getDog(String dogName) throws Exception {
 		Connection connection = getConnection();
 
-		String selectQuery = "SELECT * from DOGS where id = ?";
+		String selectQuery = "SELECT * from DOGS where name = ?";
 		PreparedStatement statement = connection.prepareStatement(selectQuery);
 
-		statement.setInt(1, dogID);
+		statement.setString(1, dogName);
 		ResultSet resultSet = statement.executeQuery();
+		
+		Dog dog = new Dog();
 
 		while (resultSet.next()) {
-			long dogId = resultSet.getLong("id");
-		    String dogName = resultSet.getString("name");
-		    String age = resultSet.getString("age");
-		    String breed = resultSet.getString("breed");
-		    String colour = resultSet.getString("colour");
-		    String activity = resultSet.getString("activity");
-		    String maintenance = resultSet.getString("maintenance");
-		    String owner_email = resultSet.getString("owner_email");
-		    String owner_name = resultSet.getString("owner_name");
-		    String owner_password = resultSet.getString("owner_password");
-		        
-		    System.out.println("getDog(id):\nDog ID: " + dogId + "\nName: " + dogName);
-		    System.out.println("\tAge: " + age + "\nBreed: " + breed + "\tColor: "	+ colour 
-		    		 + "\nActivity: " + activity + "\tMaintenance: " + maintenance 
-		        	+ "\nOwner Details: \nName: " + owner_name + "\tEmail: " + owner_email 
-		        	+ "\tPassword: " + owner_password + "\n");
-		    }
-	}
-	
-	public void updateDog(int dogID) throws Exception {
-		Connection connection = getConnection();
-
-		String selectQuery = "SELECT * from DOGS where id = ?";
-		PreparedStatement statement = connection.prepareStatement(selectQuery);
-
-		statement.setInt(1, dogID);
-		ResultSet resultSet = statement.executeQuery();
-
-		// FILL IN THE FIELDS WITH THE DATA FROM DATABASE AND ALLOW USER TO UPDATE ANY OF THEM
-		while (resultSet.next()) {
-			long dogId = resultSet.getLong("id");
+			int id = resultSet.getInt("id");
 		    String name = resultSet.getString("name");
 		    String age = resultSet.getString("age");
 		    String breed = resultSet.getString("breed");
@@ -191,90 +162,161 @@ public enum DogsDAO {
 		    String owner_email = resultSet.getString("owner_email");
 		    String owner_name = resultSet.getString("owner_name");
 		    String owner_password = resultSet.getString("owner_password");
-		
-		String query = "UPDATE \"PUBLIC\".\"DOGS\" SET name = ?, age = ?, breed = ?, colour = ?, activity = ?, maintenance = ?, owner_email = ?, owner_name = ?, owner_password = ?  WHERE id = ?";
-			
-		PreparedStatement statement2 = connection.prepareStatement(query);
-		statement2.setString(1, name);
-		statement2.setString(2, age);
-		statement2.setString(3, breed);
-		statement2.setString(4, colour);
-		statement2.setString(5, activity);
-		statement2.setString(6, maintenance);
-		statement2.setString(7, owner_email);
-		statement2.setString(8, owner_name);
-		statement2.setString(9, owner_password);
-		statement2.setInt(10, dogID);
-		statement2.executeUpdate();
-		
-		System.out.println("updateDog(): Dog " + name + " was successfully updated.\n");
-		}
+		        
+		    System.out.println("getDog(id):\nId: " + id + "\tName: " + name + "\tAge: " + age 
+		    		+ "\nBreed: " + breed + "\tColor: "	+ colour 
+		    		+ "\nActivity: " + activity + "\tMaintenance: " + maintenance 
+		        	+ "\nOwner Details: \nName: " + owner_name + "\tEmail: " + owner_email 
+		        	+ "\tPassword: " + owner_password + "\n");
+		    
+			dog.setID(id);
+			dog.setName(name);
+			dog.setAge(age);
+			dog.setBreed(breed);
+			dog.setColour(colour);
+			dog.setActivity(activity);
+			dog.setMaintenance(maintenance);
+			dog.setOwner_email(owner_email);
+			dog.setOwner_name(owner_name);
+			dog.setOwner_password(owner_password);	
+		    }	
+		return dog;
 	}
 	
-	public void updateDogAge(int dogID, int newAge) throws Exception {
+	public Dog getDogByName(String email, String dogName) throws Exception {
 		Connection connection = getConnection();
-		String updateAge = "UPDATE \"PUBLIC\".\"DOGS\" SET age = ? WHERE id = ?";
-			
-		PreparedStatement statement = connection.prepareStatement(updateAge);
-		statement.setInt(1, newAge);
-		statement.setInt(2, dogID);
-		statement.executeUpdate();
+
+		String selectQuery = "SELECT * FROM DOGS WHERE owner_email = ? AND name = ?";
+        PreparedStatement statement = connection.prepareStatement(selectQuery);
+
+        statement.setString(1, email);
+        statement.setString(2, dogName);
+        
+        ResultSet resultSet = statement.executeQuery();
+		
+		Dog dog = new Dog();
+
+		while (resultSet.next()) {
+			int id = resultSet.getInt("id");
+		    String name = resultSet.getString("name");
+		    String age = resultSet.getString("age");
+		    String breed = resultSet.getString("breed");
+		    String colour = resultSet.getString("colour");
+		    String activity = resultSet.getString("activity");
+		    String maintenance = resultSet.getString("maintenance");
+		    String owner_email = resultSet.getString("owner_email");
+		    String owner_name = resultSet.getString("owner_name");
+		    String owner_password = resultSet.getString("owner_password");
+		        
+		    System.out.println("getDog(id):\nId: " + id + "\tName: " + name + "\tAge: " + age 
+		    		+ "\nBreed: " + breed + "\tColor: "	+ colour 
+		    		+ "\nActivity: " + activity + "\tMaintenance: " + maintenance 
+		        	+ "\nOwner Details: \nName: " + owner_name + "\tEmail: " + owner_email 
+		        	+ "\tPassword: " + owner_password + "\n");
 		    
-		System.out.println("Dog's " + dogID + " age was successfully updated.");
+			dog.setID(id);
+			dog.setName(name);
+			dog.setAge(age);
+			dog.setBreed(breed);
+			dog.setColour(colour);
+			dog.setActivity(activity);
+			dog.setMaintenance(maintenance);
+			dog.setOwner_email(owner_email);
+			dog.setOwner_name(owner_name);
+			dog.setOwner_password(owner_password);	
+		    }	
+		return dog;
 	}
-		
-	public void updateDogBreed(int dogID, String newBreed) throws Exception {
+	
+	public void updateDog(Dog dog) throws Exception {
 		Connection connection = getConnection();
-		String updateBreed = "UPDATE \"PUBLIC\".\"DOGS\" SET breed = ? WHERE id = ?";
-		PreparedStatement statement = connection.prepareStatement(updateBreed);
-		statement.setString(1, newBreed);
-		statement.setInt(2, dogID);
-		statement.executeUpdate();
-		    
-		System.out.println("Dog's " + dogID + " breed was successfully updated.");
+
+		String updateQuery = "UPDATE dogs SET age = ?, breed = ?, colour = ?, activity = ?, maintenance = ?, owner_email = ?, owner_name = ?, owner_password = ? WHERE name = ?";
+	    PreparedStatement statement = connection.prepareStatement(updateQuery);
+
+	    statement.setString(1, dog.getAge());
+	    statement.setString(2, dog.getBreed());
+	    statement.setString(3, dog.getColour());
+	    statement.setString(4, dog.getActivity());
+	    statement.setString(5, dog.getMaintenance());
+	    statement.setString(6, dog.getOwner_email());
+	    statement.setString(7, dog.getOwner_name());
+	    statement.setString(8, dog.getOwner_password());
+	    statement.setString(9, dog.getName());
+	    
+	    int rowsAffected = statement.executeUpdate();
+	    
+	    if (rowsAffected > 0) {
+	        System.out.println("updateDog(): Dog " + dog.getName() + " was successfully updated.\n");
+	    } else {
+	        System.out.println("updateDog(): Dog " + dog.getName() + " not found.\n");
+	    }	
 	}
+	
+//	public void updateDogAge(int dogID, int newAge) throws Exception {
+//		Connection connection = getConnection();
+//		String updateAge = "UPDATE \"PUBLIC\".\"DOGS\" SET age = ? WHERE id = ?";
+//			
+//		PreparedStatement statement = connection.prepareStatement(updateAge);
+//		statement.setInt(1, newAge);
+//		statement.setInt(2, dogID);
+//		statement.executeUpdate();
+//		    
+//		System.out.println("Dog's " + dogID + " age was successfully updated.");
+//	}
+//		
+//	public void updateDogBreed(int dogID, String newBreed) throws Exception {
+//		Connection connection = getConnection();
+//		String updateBreed = "UPDATE \"PUBLIC\".\"DOGS\" SET breed = ? WHERE id = ?";
+//		PreparedStatement statement = connection.prepareStatement(updateBreed);
+//		statement.setString(1, newBreed);
+//		statement.setInt(2, dogID);
+//		statement.executeUpdate();
+//		    
+//		System.out.println("Dog's " + dogID + " breed was successfully updated.");
+//	}
+//		
+//	public void updateColour(int dogID, String newColor) throws Exception {
+//		Connection connection = getConnection();
+//		String updateColor = "UPDATE \"PUBLIC\".\"DOGS\" SET color = ? WHERE id = ?";
+//		PreparedStatement statement = connection.prepareStatement(updateColor);
+//		statement.setString(1, newColor);
+//		statement.setInt(2, dogID);
+//		statement.executeUpdate();
+//		    
+//		System.out.println("Dog's " + dogID + " colour was successfully updated.");
+//	}
+//		
+//	public void updateActivity(int dogID, String newActivity) throws Exception {
+//		Connection connection = getConnection();
+//		String updateActivity = "UPDATE \"PUBLIC\".\"DOGS\" SET activity = ? WHERE id = ?";
+//		PreparedStatement statement = connection.prepareStatement(updateActivity);
+//		statement.setString(1, newActivity);
+//		statement.setInt(2, dogID);
+//		statement.executeUpdate();
+//		   
+//		System.out.println("Dog's " + dogID + " activity was successfully updated.");
+//	}
+//		
+//	public void updateMaintenance(int dogID, String newMaintenance) throws Exception {
+//			Connection connection = getConnection();
+//			String updateMaintenance = "UPDATE \"PUBLIC\".\"DOGS\" SET meintenance = ? WHERE id = ?";
+//		try {
+//			PreparedStatement statement = connection.prepareStatement(updateMaintenance);
+//			statement.setString(1, newMaintenance);
+//			statement.setInt(2, dogID);
+//			statement.executeUpdate();
+//			System.out.println("Dog's " + dogID + " maintenance was successfully updated.");
+//		} catch (Exception e) {
+//			System.out.println("Couldn't update dog's maintenance level.");
+//		} finally {
+//			connection.close();
+//		}    
+//	}
 		
-	public void updateColour(int dogID, String newColor) throws Exception {
-		Connection connection = getConnection();
-		String updateColor = "UPDATE \"PUBLIC\".\"DOGS\" SET color = ? WHERE id = ?";
-		PreparedStatement statement = connection.prepareStatement(updateColor);
-		statement.setString(1, newColor);
-		statement.setInt(2, dogID);
-		statement.executeUpdate();
-		    
-		System.out.println("Dog's " + dogID + " colour was successfully updated.");
-	}
-		
-	public void updateActivity(int dogID, String newActivity) throws Exception {
-		Connection connection = getConnection();
-		String updateActivity = "UPDATE \"PUBLIC\".\"DOGS\" SET activity = ? WHERE id = ?";
-		PreparedStatement statement = connection.prepareStatement(updateActivity);
-		statement.setString(1, newActivity);
-		statement.setInt(2, dogID);
-		statement.executeUpdate();
-		   
-		System.out.println("Dog's " + dogID + " activity was successfully updated.");
-	}
-		
-	public void updateMaintenance(int dogID, String newMaintenance) throws Exception {
-			Connection connection = getConnection();
-			String updateMaintenance = "UPDATE \"PUBLIC\".\"DOGS\" SET meintenance = ? WHERE id = ?";
-		try {
-			PreparedStatement statement = connection.prepareStatement(updateMaintenance);
-			statement.setString(1, newMaintenance);
-			statement.setInt(2, dogID);
-			statement.executeUpdate();
-			System.out.println("Dog's " + dogID + " maintenance was successfully updated.");
-		} catch (Exception e) {
-			System.out.println("Couldn't update dog's maintenance level.");
-		} finally {
-			connection.close();
-		}    
-	}
-		
-	public List<Dogs> dogsList() throws ClassNotFoundException, SQLException {
+	public List<Dog> dogsList() throws ClassNotFoundException, SQLException {
 		Connection connection = null;
-		List<Dogs> dogsList = new ArrayList<Dogs>();
+		List<Dog> dogsList = new ArrayList<Dog>();
 		
 		try {
 			connection = getConnection();
@@ -282,7 +324,7 @@ public enum DogsDAO {
 			ResultSet resultSet = statement.executeQuery("SELECT * from DOGS");
 			
 			while (resultSet.next()) {
-				Dogs dog = new Dogs();
+				Dog dog = new Dog();
 		        dog.setID((int) resultSet.getLong("id"));
 		        dog.setName(resultSet.getString("name"));
 		        dog.setAge(resultSet.getString("age"));
@@ -303,7 +345,7 @@ public enum DogsDAO {
 		return dogsList;
 	}
 
-	List<Dogs> getDogByEmail(String email) throws SQLException, ClassNotFoundException {
+	List<Dog> getDogByEmail(String email) throws SQLException, ClassNotFoundException {
 		Connection connection = getConnection();
 
 		String selectQuery = "SELECT * FROM dogs WHERE owner_email = ?";
@@ -313,7 +355,7 @@ public enum DogsDAO {
 		ResultSet resultSet = statement.executeQuery();
 
 		while (resultSet.next()) {
-			Dogs dog = new Dogs();
+			Dog dog = new Dog();
 			dog.setID(resultSet.getInt("id"));
 	        dog.setName(resultSet.getString("name"));
 	        dog.setAge(resultSet.getString("age"));
@@ -327,7 +369,7 @@ public enum DogsDAO {
 	        
 	        
 	        boolean dogExists = false;
-	        for (Dogs existingDog : dogsList) {
+	        for (Dog existingDog : dogsList) {
 	            if (checkDog(existingDog, dog)) {
 	                dogExists = true;
 	                System.out.println("Dog already exists.");
@@ -342,7 +384,7 @@ public enum DogsDAO {
 		return dogsList;
 	}
 
-	private boolean checkDog(Dogs dog1, Dogs dog2) {
+	private boolean checkDog(Dog dog1, Dog dog2) {
 	    return dog1.getName().equals(dog2.getName()) &&
 	           dog1.getID() == (dog2.getID());
 	    }

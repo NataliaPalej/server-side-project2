@@ -6,13 +6,16 @@
 <meta charset="ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<!-- Fonts -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Allerta+Stencil">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+<!-- CSS -->
 <link rel="stylesheet" type="text/css" href="style.css">
 <title>Natalia Palej A00279259</title>
 
 <script>
 function goBack() {
-	window.location.href = "IndexServlet";
+	window.history.back();
 }
 </script>
 
@@ -33,30 +36,30 @@ function goBack() {
 <body class="body">
 <h1 class="w3-allerta">Add New Dog</h1>
 
-<h4 class="w3-margin">Hello, <c:out value="${owner_name}" />. You can add new dog here.</h4>
+<h4 class="w3-margin">Hello, <span class="sofia-username"><c:out value="${owner_name}" /></span>. You can add new dog here.</h4>
 
 <div class="w3-container w3-padding">
 	<form method = "post" action="addServlet" class="w3-container w3-margin-top form">
-		<label>Dog Name: </label> 
+		<label class="label">Dog Name: </label> 
 		<input type="text" name="name" class="inputText"/>
 		<br>
-		<label>Age:</label> 
+		<label class="label">Age:</label> 
 		<input type="text" name="age" class="inputText"/>
 		<br>
-		<label>Breed:</label> 
+		<label class="label">Breed:</label> 
 		<input type="text" name="breed" class="inputText"/>
 		<br>
-		<label>Colour:</label> 
+		<label class="label">Colour:</label> 
 		<input type="text" name="colour" class="inputText"/>
 		<br>
-		<label>Activity Level:</label> 
+		<label class="label">Activity Level:</label> 
 		<input type="text" name="activity" class="inputText"/>
 		<br>
-		<label>Maintenance: </label> 
+		<label class="label">Maintenance: </label> 
 		<input type="text" name="maintenance" class="inputText"/>
 		<br>
 		<input type="submit" value="Add" class="w3-right inputSubmit"/>
-		<button onclick="goBack()" class="inputSubmit">Back</button>
+		<button type="button" onclick="goBack()" class="inputSubmit" id="backButton">Back</button>
 	</form>
 </div>
 	

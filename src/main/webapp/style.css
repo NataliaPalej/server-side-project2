@@ -1,5 +1,18 @@
 @charset "ISO-8859-1";
 
+.w3-allerta {
+  font-family: "Allerta Stencil", Sans-serif;
+}
+
+.w3-sofia {
+  font-family: "Sofia", sans-serif;	
+  font-size: 30px;
+}
+
+.sofia-username{
+	font-family: "Sofia", sans-serif;	
+}
+
 h1 {
 	background-color: #4e0a54;
 	color: white;
@@ -24,14 +37,17 @@ h4 {
 	text-align: center;
 }
 
-td {
+.table {
 	border-width: 0.5px;
   	border-style: solid;
-  	border-color: #C8C2CB; 
+  	border-color: #C8C2CB;
+	background-color: white;
+	opacity: 85%;
 }
 
-.w3-allerta {
-  font-family: "Allerta Stencil", Sans-serif;
+.w3-hoverable tbody tr:hover {
+    background-color: #4A235A;
+    color: white;
 }
 
 .form{
@@ -43,8 +59,14 @@ td {
 	position: relative;
 }
 
-label{
+.label{
 	color: #4e0a54;
+	font-weight: bold;
+	text-align: left;
+}
+
+.label-white{
+	color: white;
 	font-weight: bold;
 	text-align: left;
 }
@@ -57,12 +79,6 @@ footer {
 	text-align: center;
   	background-color: #4e0a54;
   	color: white;
-}
-
-
-.button-container {
-    display: flex;
-    justify-content: flex-start;
 }
 
 .button {
@@ -109,6 +125,11 @@ input[type="submit"]:hover {
   	margin: 8px 0;
   	width: 100%;
   	box-sizing: border-box;
+}
+
+.input{
+	width: 30%;
+    background-color: transparent;
 }
 
 .card {

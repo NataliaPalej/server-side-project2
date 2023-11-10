@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 
@@ -7,7 +6,10 @@
 <meta charset="ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<!-- Fonts -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Allerta+Stencil">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+<!-- CSS -->
 <link rel="stylesheet" type="text/css" href="style.css">
 <title>Natalia Palej A00279259</title>
 
@@ -26,16 +28,15 @@
 </head>
 
 <body class="background">
-<h1 class="w3-allerta">Login Successful</h1>
+<h1 class="w3-allerta">Deleted Dog</h1>
 
-<div class="w3-center">
-<form method = "post" action="deleteServlet">
-	<br>
-	<input type="submit" value="DELETE" class="w3-round-large button"/>
+<h4 class="w3-margin">Hello, <span class="sofia-username"><c:out value="${owner_name}" /></span>. 
+Sad to see your dog gone... :'(</h4>
+
+<form method = "post" action="index.jsp">
+	<input type="submit" value="BACK" class="w3-left inputSubmit"/>
 </form>
-</div>
 		
-	
 <footer class="w3-padding-small">
 	<p>Natalia Palej<br>
 	Student No: A00279259</p>

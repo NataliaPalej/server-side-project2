@@ -1,7 +1,4 @@
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -47,33 +44,29 @@ public class addServlet extends HttpServlet {
 			String activity = request.getParameter("activity");
 			String maintenance = request.getParameter("maintenance");
 
-			if (request.getParameter("addButton") != null) {
-				if (name.isEmpty() | age.isEmpty() | breed.isEmpty() | colour.isEmpty() | activity.isEmpty()
-						| maintenance.isEmpty()) {
-					System.out.println("All fields must be filled in!");
-					request.getRequestDispatcher("add.jsp").forward(request, response);
-					return;
-				}
+			if (name.isEmpty() || age.isEmpty() || breed.isEmpty() || colour.isEmpty() || activity.isEmpty() || maintenance.isEmpty()) {
+				System.out.println("All fields must be filled in!");
+				request.getRequestDispatcher("add.jsp").forward(request, response);
+				return;
 			}
 
 			// Add dog to the database
-			Dogs dog = new Dogs(name, age, breed, colour, activity, maintenance, owner_name, owner_email,
-					owner_password);
+			Dog dog = new Dog(name, age, breed, colour, activity, maintenance, owner_name, owner_email, owner_password);
 			try {
-				DogsDAO.instance.insertDog(dog);
-				// Set attributes in the session as needed
-				session.setAttribute("owner_name", owner_name);
-				session.setAttribute("userDog", dog);
+				DogDAO.instance.insertDog(dog);
+				// Set attributes in the session
+				//session.setAttribute("owner_name", owner_name);
+				//session.setAttribute("userDog", dog);
 
 				// Redirect to index.jsp accessible through IndexServlet
 				response.sendRedirect("IndexServlet");
-				System.out.println("addServlet: Dog " + name + " successfully added.");
+				System.out.println("addServlet: Dog " + name + " successfully added.\n");
 			} catch (Exception e) {
-				System.out.println("Couldn't register new dog.");
+				System.out.println("Couldn't register new dog.\n");
 				e.printStackTrace();
 			}
 		} else {
-			System.out.println("No session found. You have to log in.");
+			System.out.println("No session found. You have to log in.\n");
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		}
 	}

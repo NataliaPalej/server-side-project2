@@ -1,9 +1,9 @@
-public class Dogs {
+public class Dog {
 	
 	private String age, name, breed, colour, activity, maintenance, owner_email, owner_name, owner_password;
 	private int id;
 	
-	public Dogs(String name, String age, String breed, String colour, String activity, String maintenance, String owner_name, String email, String password) {
+	public Dog(String name, String age, String breed, String colour, String activity, String maintenance, String owner_name, String email, String password) {
 		this.id = 0;
 		this.name = name;
 		this.age = age;
@@ -16,7 +16,7 @@ public class Dogs {
 		this.owner_password = password;
 	}
 		
-	public Dogs() {
+	public Dog() {
 		
 	}
 
@@ -102,7 +102,7 @@ public class Dogs {
 	
 	public String printDetails() {
 		return 
-				"\nDOG DETAILS:\nID: " + this.getID() + "\nName: " + this.getName() + "\nBreed: " + this.getBreed() 
+				"\nDOG DETAILS:\nID: " + this.getID() + "\nName: " + this.getName() + "\nAge: " + this.age + "\nBreed: " + this.getBreed() 
 				+ "\nColor: " + this.getColour() + "\nActivity: " + this.getActivity() 
 				+ "\nMaintenance: " + this.getMaintenance()+ "\nOwner Name: " + this.getOwner_name() 
 				+ "\nEmail: " + this.getOwner_email() + "\nPassword: " + this.getOwner_password() + "\n";

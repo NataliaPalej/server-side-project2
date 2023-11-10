@@ -6,7 +6,10 @@
 <meta charset="ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<!-- Fonts -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Allerta+Stencil">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+<!-- CSS -->
 <link rel="stylesheet" type="text/css" href="style.css">
 <title>Natalia Palej A00279259</title>
 
@@ -32,31 +35,31 @@
 <div class="w3-padding w3-left">
 	<h4>Dog Details:</h4>
 	<form method = "post" action="RegisterServlet" class="w3-container w3-padding form">
-		<label>Dog Name: </label> 
+		<label class="label">Dog Name: </label> 
 		<input type="text" name="name" class="inputText"/>
 		<br>
-		<label>Age:</label> 
+		<label class="label">Age:</label> 
 		<input type="text" name="age" class="inputText"/>
 		<br>
-		<label>Breed:</label> 
+		<label class="label">Breed:</label> 
 		<input type="text" name="breed" class="inputText"/>
 		<br>
-		<label>Colour:</label> 
+		<label class="label">Colour:</label> 
 		<input type="text" name="colour" class="inputText"/>
 		<br>
-		<label>Activity Level:</label> 
+		<label class="label">Activity Level:</label> 
 		<input type="text" name="activity" class="inputText"/>
 		<br>
-		<label>Maintenance: </label> 
+		<label class="label">Maintenance: </label> 
 		<input type="text" name="maintenance" class="inputText"/>
 		<br>
-		<label>Owner Name: </label> 
+		<label class="label">Owner Name: </label> 
 		<input type="text" name="owner_name" class="inputText"/>
 		<br>
-		<label>Owner Email: </label> 
+		<label class="label">Owner Email: </label> 
 		<input type="text" name="owner_email" class="inputText"/>
 		<br>
-		<label>Owner Password: </label> 
+		<label class="label">Owner Password: </label> 
 		<input type="text" name="owner_password" class="inputText"/>
 		<br>
 		<input type="submit" value="Register" class="w3-right inputSubmit"/>

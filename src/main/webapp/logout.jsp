@@ -6,7 +6,10 @@
 <meta charset="ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<!-- Fonts -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Allerta+Stencil">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+<!-- CSS -->
 <link rel="stylesheet" type="text/css" href="style.css">
 <title>Natalia Palej A00279259</title>
 
@@ -28,7 +31,7 @@
 
 <h1 class="w3-allerta">G O O D B Y E</h1>
 <div class="body w3-center">
-	<h2>Sad to see you go, <c:out value="${owner_name}" />!</h2>
+	<h2>Sad to see you go, <span class="sofia-username"><c:out value="${owner_name}" /></span>!</h2>
 	<h5>Hope to see you again...</h5>
 </div>
 	

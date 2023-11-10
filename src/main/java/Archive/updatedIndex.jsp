@@ -71,33 +71,46 @@
 				</tr>
 			</c:forEach>
 		</table>
-
-	<!-- UPDATE/DELETE dog -->
-		<div class="w3-margin">
+		
+		<div>
 			<form method="post" action="DogToUpdate">
-		        <label for="selectDog">Select dog to update/delete:</label>
-			        <select name="name" id="selectDog" style="width: 200px;" >
+		        <label for="dogSelect">Select a dog to update:</label>
+			        <select name="name" id="dogSelect">
 			            <c:forEach items="${dogDetails}" var="dogObj">
 			                <option value="${dogObj.name}">${dogObj.name}</option>
 			            </c:forEach>
 			        </select>
-			        <div class="w3-panel">
-			        	<input type="submit" name="userChoice" value="Update" class="menuType w3-margin" style="width: 40%"/>
-			        	<input type="submit" name="userChoice" value="Delete" class="menuType w3-margin" style="width: 40%"/>
-			        </div>
+		        <input type="submit" value="Update Dog" class="menuType" />
 	    	</form>
    		</div>
 	</div>
+
+	<br>
+	<br>
 
 	<div class="w3-container">
 		<h3 class="w3-half">MENU:</h3>
 	</div>
 
 	<div class="w3-bar-block">
-		<!-- INSERT dog -->
+		<!-- ADD NEW DOGS -->
 		<div class="w3-bar-item">
 			<form method="post" action="add.jsp">
 				<input type="submit" value="Add New Dog" class="menuType" />
+			</form>
+		</div>
+
+		<!-- UPDATE dog -->
+		<div class="w3-bar-item">
+			<form method="post" action="DogToUpdate">
+				<input type="submit" value="Update Dog" class="menuType" />
+			</form>
+		</div>
+
+		<!-- DELETE dog -->
+		<div class="w3-bar-item">
+			<form method="post" action="delete.jsp">
+				<input type="submit" value="Delete Dog" class="menuType" />
 			</form>
 		</div>
 

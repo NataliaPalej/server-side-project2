@@ -6,7 +6,10 @@
 <head>
 <meta charset="ISO-8859-1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<!-- Fonts -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Allerta+Stencil">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+<!-- CSS -->
 <link rel="stylesheet" type="text/css" href="style.css">
 <title>Natalia Palej A00279259</title>
 
@@ -30,10 +33,10 @@
 	<div class="w3-half w3-card w3-margin w3-padding">
 		<h3>Log In:</h3>
 		<form method = "post" action="LoginServlet">
-			<label>Email: </label> 
+			<label class="label">Email: </label> 
 			<input type="text" name="owner_email" class="inputText"/>
 			<br>
-			<label>Password</label> 
+			<label class="label">Password</label> 
 			<input type="text" name="password" class="inputText"/>
 			<br>
 			<input type="submit" value="Login" class="w3-right inputSubmit"/>

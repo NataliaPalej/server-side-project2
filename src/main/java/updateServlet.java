@@ -1,15 +1,8 @@
-
-
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 
 /**
  * Servlet implementation class updateServlet
@@ -29,9 +22,14 @@ public class updateServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession(false);
+		
+		// Retrieve details from the session
+		Dog dogToUpdate = (Dog) session.getAttribute("selectedDog");
+		System.out.println("SELECTED DOGS" + dogToUpdate);
 		
 		// Get parameters from the form
-		String name = request.getParameter("name");
+		String name = dogToUpdate.getName();
 		String age = request.getParameter("age");
 		String breed = request.getParameter("breed");
 		String colour = request.getParameter("colour");
@@ -41,15 +39,25 @@ public class updateServlet extends HttpServlet {
 		String owner_email = request.getParameter("owner_email");
 		String owner_password = request.getParameter("owner_password");
 		
-		// Update dog
-		Dogs dog = new Dogs(name, age, breed, colour, activity, maintenance, owner_name, owner_email, owner_password);
-		try {
-			DogsDAO.instance.updateDog(dog.getID());
-			request.getRequestDispatcher("index.jsp").forward(request, response);
-			System.out.println("Dog was successfully updated.");
-		} catch (Exception e1) {
-			System.out.println("Couldn't update the dog.");
-			e1.printStackTrace();
+		try {	        
+	        // Update dog
+			Dog updatedDog = new Dog(name, age, breed, colour, activity, maintenance, owner_name, owner_email, owner_password);
+			DogDAO.instance.updateDog(updatedDog);;
+			
+			// Retrieve email from the session
+			String ownerEmail = (String) session.getAttribute("owner_email");
+			// Update dog for the user
+			List<Dog> updatedDogList = DogDAO.instance.getDogByEmail(ownerEmail);
+			
+			// Update the session with updated list 
+			session.setAttribute("dogDetails", updatedDogList);
+			session.setAttribute("selectedDog", updatedDog);
+
+			//request.getRequestDispatcher("index.jsp").forward(request, response);
+			response.sendRedirect("index.jsp");
+				
+		} catch (Exception e) {
+			System.out.println("Something went wrong in updateServlet");
 		}
 	}
 }

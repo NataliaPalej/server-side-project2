@@ -1,10 +1,9 @@
 import java.io.IOException;
-import java.sql.*;
 import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
+
 /**
  * Servlet implementation class UserSessionCreate
  */
@@ -31,21 +30,21 @@ public class LoginServlet extends HttpServlet {
     	boolean loginSuccessful = false;
     	
     	try {
-    		loginSuccessful = DogsDAO.checkLogin(owner_email, password);
+    		loginSuccessful = DogDAO.checkLogin(owner_email, password);
   
             if (loginSuccessful) {
             	// Fetch dog details
-            	List<Dogs> userDogsList = DogsDAO.instance.getDogByEmail(owner_email);
+            	List<Dog> userDogsList = DogDAO.instance.getDogByEmail(owner_email);
             	
             	// Create session with dogs properties in it
             	HttpSession session = request.getSession();
             	session.setAttribute("owner_email", owner_email);
         		session.setAttribute("userDogsList", userDogsList);
         		
-            	System.out.println("Login successful.");
+            	System.out.println("Login successful.\n");
                 response.sendRedirect("login2.jsp");
             } else {
-            	System.out.println("Login unsuccessful.");
+            	System.out.println("Login unsuccessful.\n");
                 response.sendRedirect("login.jsp");
             }
         } catch (Exception e) {

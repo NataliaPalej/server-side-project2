@@ -1,11 +1,11 @@
 import java.io.IOException;
 import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class OtherDogsController
@@ -25,12 +25,15 @@ public class AllDogsServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// Retrieve dogs from the session
-		List<Dogs> dogDetails;
+		// Retrieve dogs and session attributes as needed.
+		HttpSession session = request.getSession(false);
+		
+		// Retrieve all dogs
+		List<Dog> allDogs;
 		try {
-			dogDetails = DogsDAO.instance.dogsList();
+			allDogs = DogDAO.instance.dogsList();
 			// Pass dogList to the indexAllDogs.jsp
-	        request.setAttribute("dogDetails", dogDetails);
+	        session.setAttribute("allDogs", allDogs);
 	        // Forward to indexAllDogs.jsp
 			request.getRequestDispatcher("indexAllDogs.jsp").forward(request, response);
 		} catch (Exception e) {

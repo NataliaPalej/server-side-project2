@@ -1,9 +1,5 @@
-
-
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,15 +23,15 @@ public class IndexServlet extends HttpServlet {
 	            // Get the email from the session
 	            String owner_email = (String) session.getAttribute("owner_email");
 	            // Retrieve dogs for the user
-	            List<Dogs> dogDetails = DogsDAO.instance.getDogByEmail(owner_email);
-	            request.setAttribute("dogDetails", dogDetails);
+	            List<Dog> dogDetails = DogDAO.instance.getDogByEmail(owner_email);
+	            session.setAttribute("dogDetails", dogDetails);
 	            request.getRequestDispatcher("index.jsp").forward(request, response);
 			} else {
-	            System.out.println("No session found. You have to log in.");
+	            System.out.println("No session found. You have to log in.\n");
 	            request.getRequestDispatcher("login.jsp").forward(request, response);
 	        }
 		} catch (Exception e) {
-            System.out.println("Error couldn't retrieve dog's details.");
+            System.out.println("Error couldn't retrieve dog's details.\n");
             e.printStackTrace();
         }
     }
@@ -49,11 +45,11 @@ public class IndexServlet extends HttpServlet {
             String userEmail = (String) session.getAttribute("owner_email");
 
             try {
-                List<Dogs> dogs = DogsDAO.instance.getDogByEmail(userEmail);
+                List<Dog> dogs = DogDAO.instance.getDogByEmail(userEmail);
 
                 if (dogs != null && !dogs.isEmpty()) {
                 	// Get the user's dog from the list
-                    Dogs userDog = dogs.get(0); 
+                    Dog userDog = dogs.get(0); 
 
                     String owner_name = userDog.getOwner_name();
                     String owner_password = userDog.getOwner_password();
@@ -61,21 +57,17 @@ public class IndexServlet extends HttpServlet {
                     session.setAttribute("owner_password", owner_password);
                     session.setAttribute("userDog", userDog);
                     request.setAttribute("dogDetails", dogs);
-
-                    System.out.println("Dog details: " + userDog.getName());
-                    System.out.println("Dog was successfully fetched.\n");
-                    System.out.println(userDog.getName() + "\n");
-
+                    
                     request.getRequestDispatcher("index.jsp").forward(request, response);
                 } else {
-                    System.out.println("Error, couldn't fetch dog details");
+                    System.out.println("Error, couldn't fetch dog details.\n");
                 }
             } catch (Exception e) {
-                System.out.println("Error couldn't retrieve dog's details.");
+                System.out.println("Error couldn't retrieve dog's details.\n");
                 e.printStackTrace();
             }
         } else {
-            System.out.println("No session found. You have to log in.");
+            System.out.println("No session found. You have to log in.\n");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
     }
