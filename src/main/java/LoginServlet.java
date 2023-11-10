@@ -25,21 +25,21 @@ public class LoginServlet extends HttpServlet {
 	 */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	// Get parameters from the form
-    	String email = request.getParameter("email");
+    	String owner_email = request.getParameter("owner_email");
     	String password = request.getParameter("password");
     	
     	boolean loginSuccessful = false;
     	
     	try {
-    		Connection connection = DogsDAO.getConnection();
-    		loginSuccessful = DogsDAO.checkLogin(email, password);
+    		loginSuccessful = DogsDAO.checkLogin(owner_email, password);
   
             if (loginSuccessful) {
             	// Fetch dog details
-            	List<Dogs> userDogsList = DogsDAO.instance.getDogByEmail(email);
+            	List<Dogs> userDogsList = DogsDAO.instance.getDogByEmail(owner_email);
             	
             	// Create session with dogs properties in it
             	HttpSession session = request.getSession();
+            	session.setAttribute("owner_email", owner_email);
         		session.setAttribute("userDogsList", userDogsList);
         		
             	System.out.println("Login successful.");
