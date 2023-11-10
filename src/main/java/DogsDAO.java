@@ -342,8 +342,56 @@ public enum DogsDAO {
 		return dogsList;
 	}
 
-private boolean checkDog(Dogs dog1, Dogs dog2) {
-    return dog1.getName().equals(dog2.getName()) &&
-           dog1.getID() == (dog2.getID());
-    }
+	private boolean checkDog(Dogs dog1, Dogs dog2) {
+	    return dog1.getName().equals(dog2.getName()) &&
+	           dog1.getID() == (dog2.getID());
+	    }
+	
+	int ownersCount() throws ClassNotFoundException, SQLException {
+		Connection connection = null;
+		int count = 0;
+		
+		try {
+			connection = getConnection();
+
+			// Get amount of owners
+            String selectQuery = "SELECT COUNT(DISTINCT owner_name) AS owner_count FROM DOGS";
+            PreparedStatement statement = connection.prepareStatement(selectQuery);
+
+            ResultSet resultSet = statement.executeQuery();
+            
+            if (resultSet.next()) {
+                count = resultSet.getInt("owner_count");
+            }
+		} finally {
+            if (connection != null) {
+                connection.close();
+            }
+        }
+		return count;
+	}
+	
+	int dogsCount() throws ClassNotFoundException, SQLException {
+		Connection connection = null;
+		int count = 0;
+		
+		try {
+			connection = getConnection();
+
+			// Get amount of owners
+            String selectQuery = "SELECT COUNT(DISTINCT name) AS dogs_count FROM DOGS";
+            PreparedStatement statement = connection.prepareStatement(selectQuery);
+
+            ResultSet resultSet = statement.executeQuery();
+            
+            if (resultSet.next()) {
+                count = resultSet.getInt("dogs_count");
+            }
+		} finally {
+            if (connection != null) {
+                connection.close();
+            }
+        }
+		return count;
+	}
 }

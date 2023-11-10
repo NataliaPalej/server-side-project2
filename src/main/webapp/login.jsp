@@ -42,7 +42,7 @@
 	
 	<div class="w3-half w3-card w3-margin card">
 		<h3>Not a Member Yet?</h3>
-		<form method = "post" action="register.jsp">
+		<form method = "post" action="RegisterUser">
 			<input type="submit" value="Register" class="w3-right inputSubmit"/>
 		</form>
 	</div>
