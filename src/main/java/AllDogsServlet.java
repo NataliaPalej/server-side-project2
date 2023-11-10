@@ -29,10 +29,10 @@ public class AllDogsServlet extends HttpServlet {
 		List<Dogs> dogDetails;
 		try {
 			dogDetails = DogsDAO.instance.dogsList();
-			// Pass dogList to the index2.jsp
+			// Pass dogList to the indexAllDogs.jsp
 	        request.setAttribute("dogDetails", dogDetails);
-	        // Forward to index2.jsp
-			request.getRequestDispatcher("index2.jsp").forward(request, response);
+	        // Forward to indexAllDogs.jsp
+			request.getRequestDispatcher("indexAllDogs.jsp").forward(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}    

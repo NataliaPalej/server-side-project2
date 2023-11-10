@@ -29,17 +29,6 @@ public class updateServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		try {
-			Class.forName("org.hsqldb.jdbcDriver");
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-		try {
-			Connection con = DriverManager.getConnection(
-			"jdbc:hsqldb:hsql://localhost/oneDB", "SA", "");
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
 		
 		// Get parameters from the form
 		String name = request.getParameter("name");

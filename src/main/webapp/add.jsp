@@ -18,7 +18,7 @@ function goBack() {
 
 <style>
 	.body{
-		background-image: url("add2.jpg");
+		background-image: url("add.jpg");
   		background-repeat: no-repeat;
   		background-attachment: fixed;
   		background-size: cover;

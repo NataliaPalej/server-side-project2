@@ -4,14 +4,15 @@ public class Dogs {
 	private int id;
 	
 	public Dogs(String name, String age, String breed, String colour, String activity, String maintenance, String owner_name, String email, String password) {
+		this.id = 0;
 		this.name = name;
 		this.age = age;
 		this.breed = breed;
 		this.colour = colour;
 		this.activity = activity;
 		this.maintenance = maintenance;
-		this.owner_email = email;
 		this.owner_name = owner_name;
+		this.owner_email = email;
 		this.owner_password = password;
 	}
 		

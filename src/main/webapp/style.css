@@ -110,3 +110,7 @@ input[type="submit"]:hover {
   	width: 100%;
   	box-sizing: border-box;
 }
+
+.card {
+	border-color: #4A235A;
+}

@@ -12,7 +12,7 @@
 
 <style>
 	.background{
-		background-image: url("background5.jpg");
+		background-image: url("index.jpg");
   		background-repeat: no-repeat;
   		background-attachment: fixed;
   		background-size: cover;

@@ -18,17 +18,16 @@ import javax.servlet.http.HttpSession;
 public class IndexServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Handle GET requests here, e.g., to display the page with dog details.
-        // Retrieve dogs and session attributes as needed.
+        // Retrieve dogs and session attributes
 		HttpSession session = request.getSession(false); 
 		
 		try {
 			if (session != null) {
-	            // Get the user's email from the session
-	            String userEmail = (String) session.getAttribute("user");
-	            List<Dogs> dogDetails = DogsDAO.instance.getDogByEmail(userEmail);
+	            // Get the email from the session
+	            String owner_email = (String) session.getAttribute("owner_email");
+	            // Retrieve dogs for the user
+	            List<Dogs> dogDetails = DogsDAO.instance.getDogByEmail(owner_email);
 	            request.setAttribute("dogDetails", dogDetails);
 	            request.getRequestDispatcher("index.jsp").forward(request, response);
 			} else {
@@ -39,17 +38,15 @@ public class IndexServlet extends HttpServlet {
             System.out.println("Error couldn't retrieve dog's details.");
             e.printStackTrace();
         }
-		
     }
 	
-       
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// Use existing session or return null if no session exists
 		HttpSession session = request.getSession(false); 
 		
 		if (session != null) {
             // Get the user's email from the session
-            String userEmail = (String) session.getAttribute("user");
+            String userEmail = (String) session.getAttribute("owner_email");
 
             try {
                 List<Dogs> dogs = DogsDAO.instance.getDogByEmail(userEmail);

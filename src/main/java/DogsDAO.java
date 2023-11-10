@@ -39,10 +39,10 @@ public enum DogsDAO {
 	        resultSet = preparedStatement.executeQuery();
 
 	        if (resultSet.next() && resultSet.getInt(1) > 0) {
-	        	System.out.println("User " + email + " exists.");
+	        	System.out.println("checkLogin(): User " + email + " exists.\n");
 	            return true;
 	        } else {
-	        	System.out.println("User " + email + " doesn't exist");
+	        	System.out.println("checkLogin(): User " + email + " either doesn't exist or incorrect credentials were provided.");
 	            return false;
 	        }
 	    } catch (SQLException e) {
@@ -86,7 +86,7 @@ public enum DogsDAO {
 		// Execute the statement
 		query.executeUpdate();
 		
-		System.out.println("Dog " + newDog.getName() + " was successfully created!");
+		System.out.println("insertDog(): Dog " + newDog.getName() + " was successfully created.\n");
 	}
 	
 	public void deleteDog(int dogID) throws Exception{
@@ -95,7 +95,7 @@ public enum DogsDAO {
 		PreparedStatement query = connection.prepareStatement("DELETE FROM \"PUBLIC\".\"DOGS\" WHERE id = ?");
 		query.setInt(1, dogID);
 		query.executeUpdate();
-		System.out.println("Dog " + dogID + " was successfully deleted.");
+		System.out.println("deleteDog(): Dog " + dogID + " was successfully deleted.\n");
 	}
 		
 	public List<Dogs> getDogs() throws Exception {
@@ -132,12 +132,11 @@ public enum DogsDAO {
 		     dog.setOwner_password(owner_password);
 		     dogsList.add(dog);
 
-		     //System.out.println("\n\tGET DOGS:\t");
-		     System.out.println("Dog ID: " + dogId);
-		     System.out.println("Name: " + dogName + "\tAge: " + age + "\nBreed: " + breed + "\tColor: " 
-		        					+ colour + "\nActivity: " + activity + "\tMaintenance: " + maintenance 
-		        					+ "\nOwner Name: " + owner_name + "\nOwner Email: " + owner_email 
-		        					+ "\nOwner Password: " + owner_password);
+		     System.out.println("getDogs():\nDog ID: " + dogId + "\nName: " + dogName);
+		     System.out.println("\tAge: " + age + "\nBreed: " + breed + "\tColor: "	+ colour 
+		    		 + "\nActivity: " + activity + "\tMaintenance: " + maintenance 
+		        	+ "\nOwner Details: \nName: " + owner_name + "\tEmail: " + owner_email 
+		        	+ "\tPassword: " + owner_password + "\n");
 		     }
 		return dogsList;
 	}
@@ -163,12 +162,11 @@ public enum DogsDAO {
 		    String owner_name = resultSet.getString("owner_name");
 		    String owner_password = resultSet.getString("owner_password");
 		        
-		    //System.out.println("\tGET DOG BY ID:\t");
-		    System.out.println("Dog ID: " + dogId);
-		    System.out.println("Name: " + dogName + "\tAge: " + age + "\nBreed: " + breed + "\tColor: " 
-		        				+ colour + "\nActivity: " + activity + "\tMaintenance: " + maintenance 
-		        				+ "\nOwner Name: " + owner_name + "\nOwner Email: " + owner_email
-		        				+ "\nOwner Password: " + owner_password);
+		    System.out.println("getDog(id):\nDog ID: " + dogId + "\nName: " + dogName);
+		    System.out.println("\tAge: " + age + "\nBreed: " + breed + "\tColor: "	+ colour 
+		    		 + "\nActivity: " + activity + "\tMaintenance: " + maintenance 
+		        	+ "\nOwner Details: \nName: " + owner_name + "\tEmail: " + owner_email 
+		        	+ "\tPassword: " + owner_password + "\n");
 		    }
 	}
 	
@@ -209,7 +207,7 @@ public enum DogsDAO {
 		statement2.setInt(10, dogID);
 		statement2.executeUpdate();
 		
-		System.out.println("Dog " + name + " was successfully updated.");
+		System.out.println("updateDog(): Dog " + name + " was successfully updated.\n");
 		}
 	}
 	
@@ -338,7 +336,7 @@ public enum DogsDAO {
 	        }
 	        if (!dogExists) {
 	            dogsList.add(dog);
-	            System.out.println("\tGET DOG:\t" + dog.printDetails());
+	            System.out.println("getDogByEmail(): \n" + dog.printDetails());
 	        }
 		}
 		return dogsList;

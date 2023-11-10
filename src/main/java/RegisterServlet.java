@@ -30,20 +30,6 @@ public class RegisterServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		try {
-			Class.forName("org.hsqldb.jdbcDriver");
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			Connection con = DriverManager.getConnection(
-			"jdbc:hsqldb:hsql://localhost/oneDB", "SA", "");
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
 		// Get parameters from the form
 		String name = request.getParameter("name");
 		String age = request.getParameter("age");
@@ -55,23 +41,20 @@ public class RegisterServlet extends HttpServlet {
 		String owner_email = request.getParameter("owner_email");
 		String owner_password = request.getParameter("owner_password");
 		
-		if (owner_name.isEmpty()) {
-			owner_name = "Owner Unknown";
-		}
-		if (name.isEmpty()) {
-			name = "Name Unknown";
-		}
-		
-		// Add dog to the database
-		Dogs dog = new Dogs(name, age, breed, colour, activity, maintenance, owner_name, owner_email, owner_password);
-		try {
-			DogsDAO.instance.insertDog(dog);
-			request.getRequestDispatcher("login.jsp").forward(request, response);
-			System.out.println("Dog " + name + " successfully registered.");
-		} catch (Exception e1) {
-			System.out.println("Couldn't register new dog.");
-			e1.printStackTrace();
+		if (name.isEmpty() | age.isEmpty() | breed.isEmpty() | colour.isEmpty() | activity.isEmpty() | maintenance.isEmpty()) {
+			System.out.println("\nAll fields must be filled in!\n");
+			request.getRequestDispatcher("register.jsp").forward(request, response);
+		} else {
+			Dogs dog = new Dogs(name, age, breed, colour, activity, maintenance, owner_name, owner_email, owner_password);
+			try {
+				// Add dog to the database
+				DogsDAO.instance.insertDog(dog);
+				request.getRequestDispatcher("login.jsp").forward(request, response);
+				System.out.println("Dog " + name + " successfully registered.\n");
+			} catch (Exception e1) {
+				System.out.println("Couldn't register new dog.");
+				e1.printStackTrace();
+			}
 		}
 	}
-
 }

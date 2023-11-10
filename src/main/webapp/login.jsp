@@ -12,7 +12,7 @@
 
 <style>
 	.background{
-		background-image: ("background.jpg");
+		background-image: url("login.jpg");
   		background-repeat: no-repeat;
   		background-attachment: fixed;
   		background-size: cover;
@@ -27,16 +27,23 @@
 <body class="background">
 <h1 class="w3-allerta">Dogs Application</h1>
 
-	<div class="w3-half form">
+	<div class="w3-half w3-card w3-margin w3-padding">
+		<h3>Log In:</h3>
 		<form method = "post" action="LoginServlet">
-		<!-- <form method = "post" action="LoginServlet" class="w3-container w3-padding"> -->
 			<label>Email: </label> 
-			<input type="text" name="email" class="inputText"/>
+			<input type="text" name="owner_email" class="inputText"/>
 			<br>
 			<label>Password</label> 
 			<input type="text" name="password" class="inputText"/>
 			<br>
-			<input type="submit" value="Login" class="w3-right w3-round-large inputSubmit"/>
+			<input type="submit" value="Login" class="w3-right inputSubmit"/>
+		</form>
+	</div>
+	
+	<div class="w3-half w3-card w3-margin card">
+		<h3>Not a Member Yet?</h3>
+		<form method = "post" action="register.jsp">
+			<input type="submit" value="Register" class="w3-right inputSubmit"/>
 		</form>
 	</div>
 

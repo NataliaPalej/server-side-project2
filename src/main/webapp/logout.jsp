@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 
@@ -13,7 +12,7 @@
 
 <style>
 	.background{
-		background-image: ("goodbye2.jpg");
+		background-image: url("logout.jpg");
   		background-repeat: no-repeat;
   		background-attachment: fixed;
   		background-size: cover;
@@ -29,7 +28,8 @@
 
 <h1 class="w3-allerta">G O O D B Y E</h1>
 <div class="body w3-center">
-	<h2>Hope to see you again, </h2>
+	<h2>Sad to see you go, <c:out value="${owner_name}" />!</h2>
+	<h5>Hope to see you again...</h5>
 </div>
 	
 <footer class="w3-padding-small">
