@@ -73,12 +73,9 @@ you can update your dog, <span class="raleway"><c:out value="${sessionScope.sele
 </div>
 		
 	
-<footer class="w3-padding-small">
-	<p>Natalia Palej<br>
-	Student No: A00279259</p>
-	<p>Email: <a href="mailto:A00279259@student.tus.ie">A00279259@student.tus.ie</a><br>
-	Software Design with Artificial Intelligence for Cloud Computing</p>
+<footer>
+	<p>Natalia Palej&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Student No: A00279259<br>
+	Email: <a href="mailto:A00279259@student.tus.ie">A00279259@student.tus.ie</a></p>
 </footer>
-
 </body>
 </html>

@@ -13,15 +13,11 @@
 <title>Natalia Palej A00279259</title>
 
 <style>
-	.body{
+	.background{
 		background-image: url("background4.jpg");
   		background-repeat: no-repeat;
   		background-attachment: fixed;
   		background-size: cover;
-		align-items: center;
-		min-height: 400px;
-		margin-bottom: 100px;
-   		clear: both;
 		}
 </style>
 
@@ -33,12 +29,12 @@ function goBack() {
 
 </head>
 
-<body class="body">
+<body class="background">
 <h1 class="w3-allerta">Register</h1>
 
 <div class="w3-padding w3-left">
 	<h4>Dog Details:</h4>
-	<form method = "post" action="RegisterServlet" class="w3-container w3-padding form">
+	<form method = "post" action="RegisterServlet" class="w3-container w3-padding form-container">
 		<label class="label">Dog Name: </label> 
 		<input type="text" name="name" class="inputText"/>
 		<br>
@@ -95,11 +91,9 @@ function goBack() {
 	</div>
 </div>
 	
-<footer>
-	<p>Natalia Palej<br>
-	Student No: A00279259</p>
-	<p>Email: <a href="mailto:A00279259@student.tus.ie">A00279259@student.tus.ie</a><br>
-	Software Design with Artificial Intelligence for Cloud Computing</p>
+<footer class="w3-bottom">
+	<p>Natalia Palej&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Student No: A00279259<br>
+	Email: <a href="mailto:A00279259@student.tus.ie">A00279259@student.tus.ie</a></p>
 </footer>
 </body>
 </html>
