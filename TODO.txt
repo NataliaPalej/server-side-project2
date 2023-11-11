@@ -10,13 +10,10 @@
 		TODO: OtherDogsServlet -> deal with displaying all dogs - DONE
 
 4. Create page that will allow user to update their own dog - DONE
-	-> UpdateSrvlet -> deals with update method
-<!--****** Dodac edit button at the end of each row -->
-				<!-- Create method that will go into update page 
-				and will fetch dog details from that row by ID *****-->
+	-> UpdateSrvlet -> deals with update method - DONE
 	
-5. Create delete page  - DONE
-	-> DeleteServlet -> deals with delete method
+5. Create delete page  - DONE -> UPDATE -> HANDLING UPDATE AND DELETE IN THE SAME SERVLET
+	-> DeleteServlet -> deals with delete method - DONE
 
-6. Logout button 
-	-> LogoutServlet -> deals with ending session 
+6. Logout button - DONE
+	-> LogoutServlet -> deals with ending session  - DONE
