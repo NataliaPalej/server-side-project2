@@ -31,8 +31,8 @@ public class RegisterUser extends HttpServlet {
 			session.setAttribute("owners_count", owners_count);
 			session.setAttribute("dogs_count", dogs_count);
 			System.out.println("Owners count: " + owners_count + "\nDogs count: " + dogs_count);
-			response.sendRedirect("register.jsp");
-			//request.getRequestDispatcher("register.jsp").forward(request, response);
+			//response.sendRedirect("register.jsp");
+			request.getRequestDispatcher("register.jsp").forward(request, response);
         } catch (Exception e) {
         	System.out.println("Couldn't fetch owners and dogs count.");
             e.printStackTrace();

@@ -97,49 +97,6 @@ public enum DogDAO {
 		System.out.println("deleteDog(): Dog " + dogID + " was successfully deleted.\n");
 	}
 	
-	public Dog getDog(String dogName) throws Exception {
-		Connection connection = getConnection();
-
-		String selectQuery = "SELECT * from DOGS where name = ?";
-		PreparedStatement statement = connection.prepareStatement(selectQuery);
-
-		statement.setString(1, dogName);
-		ResultSet resultSet = statement.executeQuery();
-		
-		Dog dog = new Dog();
-
-		while (resultSet.next()) {
-			int id = resultSet.getInt("id");
-		    String name = resultSet.getString("name");
-		    String age = resultSet.getString("age");
-		    String breed = resultSet.getString("breed");
-		    String colour = resultSet.getString("colour");
-		    String activity = resultSet.getString("activity");
-		    String maintenance = resultSet.getString("maintenance");
-		    String owner_email = resultSet.getString("owner_email");
-		    String owner_name = resultSet.getString("owner_name");
-		    String owner_password = resultSet.getString("owner_password");
-		        
-		    System.out.println("getDog(id):\nId: " + id + "\tName: " + name + "\tAge: " + age 
-		    		+ "\nBreed: " + breed + "\tColor: "	+ colour 
-		    		+ "\nActivity: " + activity + "\tMaintenance: " + maintenance 
-		        	+ "\nOwner Details: \nName: " + owner_name + "\tEmail: " + owner_email 
-		        	+ "\tPassword: " + owner_password + "\n");
-		    
-			dog.setID(id);
-			dog.setName(name);
-			dog.setAge(age);
-			dog.setBreed(breed);
-			dog.setColour(colour);
-			dog.setActivity(activity);
-			dog.setMaintenance(maintenance);
-			dog.setOwner_email(owner_email);
-			dog.setOwner_name(owner_name);
-			dog.setOwner_password(owner_password);	
-		    }	
-		return dog;
-	}
-	
 	public Dog getDogByName(String email, String dogName) throws Exception {
 		Connection connection = getConnection();
 
