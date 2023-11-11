@@ -3,12 +3,12 @@
 <html>
 
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <!-- Fonts -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Allerta+Stencil">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap" >
 <!-- CSS -->
 <link rel="stylesheet" type="text/css" href="style.css">
 <title>Natalia Palej A00279259</title>
@@ -36,7 +36,7 @@ function goBack() {
 <body class="body">
 <h1 class="w3-allerta">Add New Dog</h1>
 
-<h4 class="w3-margin">Hello, <span class="sofia-username"><c:out value="${owner_name}" /></span>. You can add new dog here.</h4>
+<h4 class="w3-margin"><span class="raleway"><c:out value="${owner_name}" /></span>, you can add new dog here.</h4>
 
 <div class="w3-container w3-padding">
 	<form method = "post" action="addServlet" class="w3-container w3-margin-top form">

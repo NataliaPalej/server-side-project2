@@ -3,14 +3,12 @@
 <html>
 
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <!-- Fonts -->
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Allerta+Stencil">
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Sofia">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Allerta+Stencil">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap" >
 <!-- CSS -->
 <link rel="stylesheet" type="text/css" href="style.css">
 <title>Natalia Palej A00279259</title>
@@ -33,15 +31,9 @@
 	<h1 class="w3-allerta">My Dog Details</h1>
 	<br>
 
-	<!-- Setting session attributes -->
-	<c:set var="name" value="${userDogsList[0].name}" scope="session" />
-	
 	<div class="w3-container">
-		<c:set var="owner_name" value="${userDogsList[0].owner_name}"
-			scope="session" />
 		<h3 class="w3-half">
-			Hello, <span class="sofia-username"><c:out
-					value="${owner_name}" /></span>
+			Hello, <span class="raleway"><c:out value="${owner_name}" /></span>!
 		</h3>
 	</div>
 
@@ -74,7 +66,7 @@
 
 	<!-- UPDATE/DELETE dog -->
 		<div class="w3-margin">
-			<form method="post" action="DogToUpdate">
+			<form method="post" action="SelectedDog">
 		        <label for="selectDog">Select dog to update/delete:</label>
 			        <select name="name" id="selectDog" style="width: 200px;" >
 			            <c:forEach items="${dogDetails}" var="dogObj">
@@ -112,7 +104,7 @@
 	<!-- LOGOUT and CLOSE SESSION -->
 	<div class="w3-container">
 		<div class="w3-quarter">
-			<form method="post" action="logoutServlet">
+			<form method="post" action="LogoutServlet">
 				<input type="submit" value="LOGOUT" class="menuType" />
 			</form>
 		</div>

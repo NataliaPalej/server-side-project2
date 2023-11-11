@@ -8,7 +8,6 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <!-- Fonts -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Allerta+Stencil">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
 <!-- CSS -->
 <link rel="stylesheet" type="text/css" href="style.css">
 <title>Natalia Palej A00279259</title>
@@ -26,11 +25,16 @@
 		}
 </style>
 
+<script>
+function goBack() {
+	window.location.href = "login.jsp";
+}
+</script>
 
 </head>
 
 <body class="body">
-<h1 class="w3-allerta">Register Dog</h1>
+<h1 class="w3-allerta">Register</h1>
 
 <div class="w3-padding w3-left">
 	<h4>Dog Details:</h4>
@@ -62,6 +66,7 @@
 		<label class="label">Owner Password: </label> 
 		<input type="text" name="owner_password" class="inputText"/>
 		<br>
+		<button type="button" onclick="goBack()" class="inputSubmit">Back</button>
 		<input type="submit" value="Register" class="w3-right inputSubmit"/>
 	</form>
 </div>

@@ -34,12 +34,12 @@ public class LoginServlet extends HttpServlet {
   
             if (loginSuccessful) {
             	// Fetch dog details
-            	List<Dog> userDogsList = DogDAO.instance.getDogByEmail(owner_email);
+            	List<Dog> dogDetails = DogDAO.instance.getDogByEmail(owner_email);
             	
             	// Create session with dogs properties in it
             	HttpSession session = request.getSession();
             	session.setAttribute("owner_email", owner_email);
-        		session.setAttribute("userDogsList", userDogsList);
+        		session.setAttribute("dogDetails", dogDetails);
         		
             	System.out.println("Login successful.\n");
                 response.sendRedirect("login2.jsp");

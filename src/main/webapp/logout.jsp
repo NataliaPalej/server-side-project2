@@ -3,12 +3,11 @@
 <html>
 
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <!-- Fonts -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Allerta+Stencil">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
 <!-- CSS -->
 <link rel="stylesheet" type="text/css" href="style.css">
 <title>Natalia Palej A00279259</title>
@@ -31,9 +30,15 @@
 
 <h1 class="w3-allerta">G O O D B Y E</h1>
 <div class="body w3-center">
-	<h2>Sad to see you go, <span class="sofia-username"><c:out value="${owner_name}" /></span>!</h2>
-	<h5>Hope to see you again...</h5>
+	<h2>Hope to see you again...</h2>
 </div>
+
+<div class="w3-padding w3-container w3-center ">
+<form method = "post" action="login.jsp">
+	<input type="submit" value="Login Page" class="button"/>
+</form>
+</div>
+
 	
 <footer class="w3-padding-small">
 	<p>Natalia Palej<br>

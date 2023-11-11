@@ -3,12 +3,12 @@
 <html>
 
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <!-- Fonts -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Allerta+Stencil">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap" >
 <!-- CSS -->
 <link rel="stylesheet" type="text/css" href="style.css">
 <title>Natalia Palej A00279259</title>
@@ -29,8 +29,6 @@ function goBack() {
 		height: 15vh;
 		margin: 0;
 		}
-		
-	
 </style>
 
 </head>
@@ -39,8 +37,7 @@ function goBack() {
 <h1 class="w3-allerta">All Dogs</h1>
 <br>
 
-<h4>Hello, <span class="sofia-username"><c:out value="${owner_name}" /></span>. 
-Here's list of all dogs registered in the app:</h4>
+<h4><span class="raleway"><c:out value="${owner_name}" /></span>, here's list of all dogs registered in the app:</h4>
 <br>
 
 <!-- Dogs Details represented in table -->

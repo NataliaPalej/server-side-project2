@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <!-- Fonts -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Allerta+Stencil">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap" >
 <!-- CSS -->
 <link rel="stylesheet" type="text/css" href="style.css">
 <title>Natalia Palej A00279259</title>
@@ -30,12 +30,12 @@
 <body class="background">
 <h1 class="w3-allerta">Update Your Doggie</h1>
 
-<h4 class="w3-margin">Hello, <span class="sofia-username"><c:out value="${owner_name}" /></span>. 
-You can update your dog here.</h4>
+<h4 class="w3-margin"><span class="raleway"><c:out value="${owner_name}" /></span>, 
+you can update your dog, <span class="raleway"><c:out value="${sessionScope.selectedDog.name}"/></span>, here.</h4>
 
 <div class="w3-margin">
 <label class="label-white">Dog Name: <c:out value='${selectedDog.name}'/></label> 
-	<form method = "post" action="updateServlet" class="w3-margin">
+	<form method = "post" action="UpdateServlet" class="w3-margin">
 		<label class="label-white">Age:</label> 
 		<input class="w3-input w3-animate-input input" type="text" name="age" 
 			   value="<c:out value='${selectedDog.age}'/>" />

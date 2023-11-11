@@ -54,10 +54,7 @@ public class addServlet extends HttpServlet {
 			Dog dog = new Dog(name, age, breed, colour, activity, maintenance, owner_name, owner_email, owner_password);
 			try {
 				DogDAO.instance.insertDog(dog);
-				// Set attributes in the session
-				//session.setAttribute("owner_name", owner_name);
-				//session.setAttribute("userDog", dog);
-
+				
 				// Redirect to index.jsp accessible through IndexServlet
 				response.sendRedirect("IndexServlet");
 				System.out.println("addServlet: Dog " + name + " successfully added.\n");

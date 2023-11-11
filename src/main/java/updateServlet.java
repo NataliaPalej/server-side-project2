@@ -7,14 +7,14 @@ import javax.servlet.http.*;
 /**
  * Servlet implementation class updateServlet
  */
-@WebServlet("/updateServlet")
-public class updateServlet extends HttpServlet {
+@WebServlet("/UpdateServlet")
+public class UpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public updateServlet() {
+    public UpdateServlet() {
         super();
     }
 
@@ -22,11 +22,11 @@ public class updateServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		HttpSession session = request.getSession(false);
 		
 		// Retrieve details from the session
 		Dog dogToUpdate = (Dog) session.getAttribute("selectedDog");
-		System.out.println("SELECTED DOGS" + dogToUpdate);
 		
 		// Get parameters from the form
 		String name = dogToUpdate.getName();
@@ -46,18 +46,17 @@ public class updateServlet extends HttpServlet {
 			
 			// Retrieve email from the session
 			String ownerEmail = (String) session.getAttribute("owner_email");
-			// Update dog for the user
 			List<Dog> updatedDogList = DogDAO.instance.getDogByEmail(ownerEmail);
 			
 			// Update the session with updated list 
 			session.setAttribute("dogDetails", updatedDogList);
 			session.setAttribute("selectedDog", updatedDog);
 
-			//request.getRequestDispatcher("index.jsp").forward(request, response);
-			response.sendRedirect("index.jsp");
+			request.getRequestDispatcher("IndexServlet").forward(request, response);
+			//response.sendRedirect("IndexServlet");
 				
 		} catch (Exception e) {
-			System.out.println("Something went wrong in updateServlet");
+			System.out.println("UpdateServlet: something went wrong");
 		}
 	}
 }
