@@ -27,9 +27,12 @@ public class LogoutServlet extends HttpServlet {
 		HttpSession session = request.getSession(false);
 		
 		if (session != null) {
+			System.out.println("Before logout session ID: " + session.getId());
 			session.invalidate();
+			System.out.println("After logout session ID: " + session.getId());
 			System.out.println("Log out successful.");
-			request.getRequestDispatcher("logout.jsp").forward(request, response);
+			//request.getRequestDispatcher("logout.jsp").forward(request, response);
+			response.sendRedirect("logout.jsp");
 		} else {
 			System.out.println("No session to close.");
 		}

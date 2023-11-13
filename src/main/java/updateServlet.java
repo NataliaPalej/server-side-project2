@@ -52,8 +52,8 @@ public class UpdateServlet extends HttpServlet {
 			session.setAttribute("dogDetails", updatedDogList);
 			session.setAttribute("selectedDog", updatedDog);
 
-			request.getRequestDispatcher("IndexServlet").forward(request, response);
-			//response.sendRedirect("IndexServlet");
+			//request.getRequestDispatcher("IndexServlet").forward(request, response);
+			response.sendRedirect("IndexServlet");
 				
 		} catch (Exception e) {
 			System.out.println("UpdateServlet: something went wrong");
