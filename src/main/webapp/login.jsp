@@ -1,10 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 
 <head>
-<meta charset="UTF-8">
+<meta charset="ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <!-- Fonts -->
@@ -19,9 +18,6 @@
   		background-repeat: no-repeat;
   		background-attachment: fixed;
   		background-size: cover;
-		align-items: center;
-		height: 90vh;
-		margin: 0;
 		}
 </style>
 
@@ -29,7 +25,6 @@
 
 <body class="background">
 <h1 class="w3-allerta">Dogs Application</h1>
-
 	<div class="w3-half w3-card w3-margin w3-padding">
 		<h3>Log In:</h3>
 		<form method = "post" action="LoginServlet">
@@ -38,18 +33,19 @@
 			<br>
 			<label class="label">Password</label> 
 			<input type="password" name="password" class="inputText"/>
-			<br>
-			<input type="submit" value="Login" class="w3-right inputSubmit"/>
+			<input type="submit" value="Login" class="w3-right button"/>
 		</form>
 	</div>
 	
-	<div class="w3-half w3-card w3-margin card">
+	<div class="w3-half w3-card w3-margin w3-padding">
 		<h3>Not a Member Yet?</h3>
 		<form method = "post" action="RegisterUser">
-			<input type="submit" value="Register" class="w3-right inputSubmit"/>
+			<input type="submit" value="Register" class="w3-right button"/>
 		</form>
 	</div>
-
+	
+	<div class="w3-half w3-margin w3-padding"><br><br><br></div>
+	
 <footer>
 	<p>Natalia Palej&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Student No: A00279259<br>
 	Email: <a href="mailto:A00279259@student.tus.ie">A00279259@student.tus.ie</a></p>

@@ -1,12 +1,12 @@
 @charset "ISO-8859-1";
 
 .w3-allerta {
-  font-family: "Allerta Stencil", Sans-serif;
+	font-family: "Allerta Stencil", Sans-serif;
 }
 
 .w3-sofia {
-  font-family: "Sofia", sans-serif;	
-  font-size: 30px;
+	font-family: "Sofia", sans-serif;
+	font-size: 30px;
 }
 
 .raleway {
@@ -39,15 +39,15 @@ h4 {
 
 .table {
 	border-width: 0.5px;
-  	border-style: solid;
-  	border-color: #C8C2CB;
+	border-style: solid;
+	border-color: #C8C2CB;
 	background-color: white;
 	opacity: 85%;
 }
 
 .w3-hoverable tbody tr:hover {
-    background-color: #4A235A;
-    color: white;
+	background-color: #4A235A;
+	color: white;
 }
 
 .form {
@@ -66,17 +66,15 @@ h4 {
 	position: relative;
 	margin: auto;
 	max-width: 600px;
-	height: 600px;
-	overflow-y: auto;
 }
 
-.label{
+.label {
 	color: #4e0a54;
 	font-weight: bold;
 	text-align: left;
 }
 
-.label-white{
+.label-white {
 	color: white;
 	font-weight: bold;
 	text-align: left;
@@ -84,19 +82,18 @@ h4 {
 
 footer {
 	position: fixed;
-	left: 0;
 	bottom: 0;
 	width: 100%;
-	padding: 10px;
+	padding: 8px;
 	text-align: center;
-  	background-color: #4e0a54;
-  	color: white;
+	background-color: #4e0a54;
+	color: white;
 }
 
-@media (max-width: 1000px) {
-  footer {
-    display: none;
-  }
+@media ( max-width : 1000px) {
+	footer {
+		display: none;
+	}
 }
 
 body {
@@ -107,35 +104,35 @@ body {
 
 .button {
 	padding: 20px 40px;
-    border: none;
-    border-radius: 8px;
-    margin-right: 16px;
-    cursor: pointer;
+	border: none;
+	border-radius: 8px;
+	margin-right: 16px;
+	cursor: pointer;
 }
 
-button:hover{
+button:hover {
 	color: white;
 	background-color: #4A235A;
 }
 
 .inputSubmit {
 	padding: 20px 40px;
-  	border: none;
-  	border-radius: 8px;
-  	margin-right: 16px;
-  	cursor: pointer;
-  	margin: 32px;
-  	background-color: #a663c2;
+	border: none;
+	border-radius: 8px;
+	margin-right: 16px;
+	cursor: pointer;
+	margin: 32px;
+	background-color: #a663c2;
 }
 
 .menuType {
 	border: none;
-  	border-radius: 8px;
-  	background-color: #a663c2;
-  	cursor: pointer;
-  	margin-left: 16px;
-  	padding: 20px;
-  	width: 50%;
+	border-radius: 8px;
+	background-color: #a663c2;
+	cursor: pointer;
+	margin-left: 16px;
+	padding: 20px;
+	width: 50%;
 }
 
 input[type="submit"]:hover {
@@ -145,17 +142,13 @@ input[type="submit"]:hover {
 
 .inputText {
 	border: 1px solid;
-  	padding: 8px;
-  	margin: 8px 0;
-  	width: 100%;
-  	box-sizing: border-box;
+	padding: 8px;
+	margin: 8px 0;
+	width: 100%;
+	box-sizing: border-box;
 }
 
-.input{
+.input {
 	width: 30%;
-    background-color: transparent;
-}
-
-.card {
-	border-color: #4A235A;
+	background-color: transparent;
 }

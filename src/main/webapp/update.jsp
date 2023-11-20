@@ -62,9 +62,19 @@ you can update your dog, <span class="raleway"><c:out value="${selectedDog.name}
 		
 		<input type="submit" value="Update" class="button w3-left"/>
 	</form>
-</div>
-		
 	
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>	
+		
 <footer>
 	<p>Natalia Palej&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Student No: A00279259<br>
 	Email: <a href="mailto:A00279259@student.tus.ie">A00279259@student.tus.ie</a></p>

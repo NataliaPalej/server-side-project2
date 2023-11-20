@@ -65,6 +65,15 @@ function goBack() {
 		<button type="button" onclick="goBack()" class="inputSubmit">Back</button>
 		<input type="submit" value="Register" class="w3-right inputSubmit"/>
 	</form>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
 </div>
 
 <div class="w3-half w3-margin w3-padding w3-center w3-card">

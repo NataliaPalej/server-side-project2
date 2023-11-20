@@ -69,6 +69,13 @@ function goBack() {
 	
 	<button onclick="goBack()" class="button w3-margin w3-left">BACK</button>
 </div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 		
 <footer>
 	<p>Natalia Palej&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Student No: A00279259<br>

@@ -39,7 +39,6 @@
 
 	<!-- Dog Details -->
 	<div class="w3-margin w3-padding w3-center" style="width: 50%">
-		<!-- Dogs Details represented in table -->
 		<table class="w3-table table w3-hoverable">
 			<thead>
 				<tr>
@@ -63,7 +62,7 @@
 			</c:forEach>
 		</table>
 
-	<!-- UPDATE/DELETE dog -->
+		<!-- UPDATE/DELETE dog -->
 		<div class="w3-margin">
 			<form method="post" action="SelectedDog">
 		        <label for="selectDog">Select dog to update/delete:</label>
@@ -109,8 +108,14 @@
 			</form>
 		</div>
 	</div>
+	
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
 
-<!-- Footer, FIX SO IT DOESNT COVER PAGE CONTENT -->
 <footer>
 	<p>Natalia Palej&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Student No: A00279259<br>
 	Email: <a href="mailto:A00279259@student.tus.ie">A00279259@student.tus.ie</a></p>
