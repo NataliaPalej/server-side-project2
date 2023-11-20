@@ -39,7 +39,6 @@ public class RegisterServlet extends HttpServlet {
 		} else {
 			Dog dog = new Dog(name, age, breed, colour, activity, maintenance, owner_name, owner_email, owner_password);
 			try {
-				// Add dog to the database
 				DogDAO.instance.insertDog(dog);
 				System.out.println("Dog " + name + " successfully registered.\n");
 				request.getRequestDispatcher("login.jsp").forward(request, response);

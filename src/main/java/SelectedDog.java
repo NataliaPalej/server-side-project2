@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class DogToUpdate
+ * Servlet implementation class SelectedDog
  */
 @WebServlet("/SelectedDog")
 public class SelectedDog extends HttpServlet {
@@ -29,7 +29,6 @@ public class SelectedDog extends HttpServlet {
 		HttpSession session = request.getSession(false);
 		String buttonClicked=request.getParameter("userChoice");
 		
-		// Get details from the session
         String owner_email = (String) session.getAttribute("owner_email");
         String selectedDogName = request.getParameter("name");
         session.setAttribute("selectedDogName", selectedDogName);

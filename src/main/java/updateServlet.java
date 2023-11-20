@@ -40,32 +40,19 @@ public class UpdateServlet extends HttpServlet {
 		String owner_password = request.getParameter("owner_password");
 		
 		try {
-			// Retrieve email from the session
 			String ownerEmail = (String) session.getAttribute("owner_email");
-			System.out.println("UpdateServlet: Owner Email from Session: " + ownerEmail);
 			
-			// Update dog
 			Dog updatedDog = new Dog(name, age, breed, colour, activity, maintenance, owner_name, owner_email, owner_password);
 			DogDAO.instance.updateDog(updatedDog);
 			
 			List<Dog> updatedDogList = DogDAO.instance.getDogByEmail(ownerEmail);
 			if (updatedDogList != null) {
-				System.out.println("UpdateServlet: updatedDogList != null");
-				System.out.println();
-				for (Dog dog : updatedDogList) {
-			        System.out.println(dog.printDetails());
-			    }
-				System.out.println();
 			    session.setAttribute("dogDetails", updatedDogList);
-			} else {
-				System.out.println("UpdateServlet: updatedDogList is null");
-			}
+			} 
 			
 			// Update the session with updated list 
 			session.removeAttribute("selectedDog");
-
-			response.sendRedirect("IndexServlet");
-				
+			response.sendRedirect("IndexServlet");	
 		} catch (Exception e) {
 			System.out.println("UpdateServlet: something went wrong");
 		}

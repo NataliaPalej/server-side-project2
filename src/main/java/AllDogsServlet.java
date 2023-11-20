@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class OtherDogsController
+ * Servlet implementation class AllDogsServlet
  */
 @WebServlet("/AllDogsServlet")
 public class AllDogsServlet extends HttpServlet {

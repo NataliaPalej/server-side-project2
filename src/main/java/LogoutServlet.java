@@ -1,11 +1,7 @@
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 
 /**
  * Servlet implementation class LogoutServlet
@@ -38,7 +34,7 @@ public class LogoutServlet extends HttpServlet {
 			
 			
 			try {
-	            // Attempting to get the session ID again should ideally throw an exception
+	            // Get the session ID should throw an exception
 	            System.out.println("After logout session ID: " + session.getId());
 	        } catch (IllegalStateException e) {
 	        	// Should go here because session was deleted????
