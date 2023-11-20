@@ -30,9 +30,7 @@
 
 <body class="background">
 <h1 class="w3-allerta">Login Successful</h1>
-<c:set var="owner_name" value="${dogDetails[0].owner_name}" scope="session" />
-<c:set var="name" value="${dogDetails[0].name}" scope="session" />
-<h3>Welcome, <span class="raleway"><c:out value="${owner_name}" /></span>!</h3>
+<h3>Welcome, <span class="raleway"><c:out value="${owner_email}"/></span>!</h3>
 
 <div class="w3-card w3-margin w3-padding w3-center">
 	<p class="w3-sofia">Congratulations!</p>

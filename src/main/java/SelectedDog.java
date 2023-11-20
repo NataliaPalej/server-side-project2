@@ -1,4 +1,6 @@
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -41,8 +43,9 @@ public class SelectedDog extends HttpServlet {
     		}
     		else if (buttonClicked.equalsIgnoreCase("delete")) {
     			DogDAO.instance.deleteDog(selectedDog.getID());
-    			request.getRequestDispatcher("delete.jsp").forward(request, response);
-    		    //response.sendRedirect("delete.jsp");
+    			List<Dog> updatedDogsList = DogDAO.instance.getDogByEmail(owner_email);
+    			session.setAttribute("dogDetails", updatedDogsList);
+    		    response.sendRedirect("delete.jsp");
     		}
         } catch (Exception e) {
         	System.out.println("SelectedDog Servlet: error while fetching dog.\n");

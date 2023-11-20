@@ -25,16 +25,16 @@ public class AllDogsServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// Retrieve dogs and session attributes as needed.
 		HttpSession session = request.getSession(false);
 		
 		// Retrieve all dogs
 		List<Dog> allDogs;
 		try {
 			allDogs = DogDAO.instance.dogsList();
-			// Pass dogList to the indexAllDogs.jsp
-	        session.setAttribute("allDogs", allDogs);
-	        // Forward to indexAllDogs.jsp
+			// Check if allDogs already exists in the session
+            if (session.getAttribute("allDogs") == null) {
+                session.setAttribute("allDogs", allDogs);
+            }
 			request.getRequestDispatcher("indexAllDogs.jsp").forward(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();

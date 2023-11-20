@@ -1,4 +1,6 @@
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -54,8 +56,10 @@ public class addServlet extends HttpServlet {
 			Dog dog = new Dog(name, age, breed, colour, activity, maintenance, owner_name, owner_email, owner_password);
 			try {
 				DogDAO.instance.insertDog(dog);
+				// Update the dog details in the session
+				List<Dog> updatedDogDetails = DogDAO.instance.getDogByEmail(owner_email);
+				session.setAttribute("dogDetails", updatedDogDetails);
 				
-				// Redirect to index.jsp accessible through IndexServlet
 				response.sendRedirect("IndexServlet");
 				System.out.println("addServlet: Dog " + name + " successfully added.\n");
 			} catch (Exception e) {

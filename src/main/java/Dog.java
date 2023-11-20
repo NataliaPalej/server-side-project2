@@ -19,6 +19,14 @@ public class Dog {
 	public Dog() {
 		
 	}
+	
+	public Dog(String age, String breed, String colour, String activity, String maintenance) {
+		this.age = age;
+		this.breed = breed;
+		this.colour = colour;
+		this.activity = activity;
+		this.maintenance = maintenance;
+	}
 
 	public String getName() {
 		return name;

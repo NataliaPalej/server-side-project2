@@ -143,40 +143,45 @@ public enum DogDAO {
 	}
 	
 	public void updateDog(Dog dog) throws Exception {
-		Connection connection = getConnection();
-
-		String updateQuery = "UPDATE dogs SET age = ?, breed = ?, colour = ?, activity = ?, maintenance = ?, owner_email = ?, owner_name = ?, owner_password = ? WHERE name = ?";
-	    PreparedStatement statement = connection.prepareStatement(updateQuery);
-
-	    statement.setString(1, dog.getAge());
-	    statement.setString(2, dog.getBreed());
-	    statement.setString(3, dog.getColour());
-	    statement.setString(4, dog.getActivity());
-	    statement.setString(5, dog.getMaintenance());
-	    statement.setString(6, dog.getOwner_email());
-	    statement.setString(7, dog.getOwner_name());
-	    statement.setString(8, dog.getOwner_password());
-	    statement.setString(9, dog.getName());
-	    
-	    int rowsAffected = statement.executeUpdate();
-	    
-	    if (rowsAffected > 0) {
-	        System.out.println("updateDog(): Dog " + dog.getName() + " was successfully updated.\n");
-	    } else {
-	        System.out.println("updateDog(): Dog " + dog.getName() + " not found.\n");
-	    }	
-	}
-	
-	public List<Dog> dogsList() throws ClassNotFoundException, SQLException {
 		Connection connection = null;
-		List<Dog> dogsList = new ArrayList<Dog>();
-		
 		try {
 			connection = getConnection();
-			Statement statement = connection.createStatement();
-			ResultSet resultSet = statement.executeQuery("SELECT * from DOGS");
 			
-			while (resultSet.next()) {
+			String updateQuery = "UPDATE dogs SET age = ?, breed = ?, colour = ?, activity = ?, maintenance = ?, owner_email = ?, owner_name = ?, owner_password = ? WHERE name = ?";
+		    PreparedStatement statement = connection.prepareStatement(updateQuery);
+
+		    statement.setString(1, dog.getAge());
+		    statement.setString(2, dog.getBreed());
+		    statement.setString(3, dog.getColour());
+		    statement.setString(4, dog.getActivity());
+		    statement.setString(5, dog.getMaintenance());
+		    statement.setString(6, dog.getOwner_email());
+		    statement.setString(7, dog.getOwner_name());
+		    statement.setString(8, dog.getOwner_password());
+		    statement.setString(9, dog.getName());
+		    
+		    int rowsAffected = statement.executeUpdate();
+		    
+		    if (rowsAffected > 0) {
+		        System.out.println("updateDog(): Dog " + dog.getName() + " was successfully updated.\n");
+		    } else {
+		        System.out.println("updateDog(): Dog " + dog.getName() + " not found.\n");
+		    }	
+		} catch (Exception e) {
+			System.out.println("updateDog(): Issue while updating dog.\n");
+			}
+	}
+	
+	List<Dog> dogsList() throws ClassNotFoundException, SQLException {
+		Connection connection = null;
+		List<Dog> dogsList = new ArrayList<Dog>();
+
+        try {
+            connection = getConnection();
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * from DOGS");
+
+            while (resultSet.next()) {
 				Dog dog = new Dog();
 		        dog.setID((int) resultSet.getLong("id"));
 		        dog.setName(resultSet.getString("name"));
@@ -188,18 +193,29 @@ public enum DogDAO {
 		        dog.setOwner_email(resultSet.getString("owner_email"));
 		        dog.setOwner_name(resultSet.getString("owner_name"));
 		        dog.setOwner_password(resultSet.getString("owner_password"));
-		        dogsList.add(dog);
+		        
+		        boolean dogExists = false;
+		        for (Dog existingDog : dogsList) {
+		        	if(checkDog(existingDog, dog)) {
+		        		dogExists = true;
+		        		break;
+		        	}
 		        }
-		}finally {
-			if (connection != null) {
-				connection.close();
-				}
-			}
-		return dogsList;
-	}
+		        if (!dogExists) {
+		        	dogsList.add(dog);
+		        }
+            }
+        } finally {
+            if (connection != null) {
+                connection.close();
+            }
+        }
+        return dogsList;
+    }
 
 	List<Dog> getDogByEmail(String email) throws SQLException, ClassNotFoundException {
 		Connection connection = getConnection();
+        List<Dog> dogsList = new ArrayList<Dog>();
 
 		String selectQuery = "SELECT * FROM dogs WHERE owner_email = ?";
 		PreparedStatement statement = connection.prepareStatement(selectQuery);
@@ -240,7 +256,7 @@ public enum DogDAO {
 	private boolean checkDog(Dog dog1, Dog dog2) {
 	    return dog1.getName().equals(dog2.getName()) &&
 	           dog1.getID() == (dog2.getID());
-	    }
+	}
 	
 	int ownersCount() throws ClassNotFoundException, SQLException {
 		Connection connection = null;

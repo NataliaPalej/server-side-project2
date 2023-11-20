@@ -31,7 +31,7 @@
 <h1 class="w3-allerta">Update Your Doggie</h1>
 
 <h4 class="w3-margin"><span class="raleway"><c:out value="${owner_name}" /></span>, 
-you can update your dog, <span class="raleway"><c:out value="${sessionScope.selectedDog.name}"/></span>, here.</h4>
+you can update your dog, <span class="raleway"><c:out value="${selectedDog.name}"/></span>, here.</h4>
 
 <div class="w3-margin">
 <label class="label-white">Dog Name: <c:out value='${selectedDog.name}'/></label> 
@@ -56,18 +56,10 @@ you can update your dog, <span class="raleway"><c:out value="${sessionScope.sele
 		<input class="w3-input w3-animate-input input" type="text" name="maintenance"
 			   value="<c:out value='${selectedDog.maintenance}'/>" />
 		<br>
-		<label class="label-white">Owner Name: </label> 
-		<input class="w3-input w3-animate-input input" type="text" name="owner_name"
-			   value="<c:out value='${selectedDog.owner_name}'/>" />
-		<br>
-		<label class="label-white">Owner Email: </label> 
-		<input class="w3-input w3-animate-input input" name="owner_email"
-			   value="<c:out value='${selectedDog.owner_email}'/>" />
-		<br>
-		<label class="label-white">Owner Password: </label> 
-		<input class="w3-input w3-animate-input input" type="text" name="owner_password"
-			   value="<c:out value='${selectedDog.owner_password}'/>" />
-		<br>
+		<input type="hidden" name="owner_name" value="<c:out value='${owner_name}'/>" />
+		<input type="hidden" name="owner_email" value="<c:out value='${owner_email}'/>" />
+		<input type="hidden" name="owner_password" value="<c:out value='${owner_password}'/>" />
+		
 		<input type="submit" value="Update" class="button w3-left"/>
 	</form>
 </div>

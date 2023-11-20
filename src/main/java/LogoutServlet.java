@@ -1,6 +1,7 @@
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,13 +29,40 @@ public class LogoutServlet extends HttpServlet {
 		
 		if (session != null) {
 			System.out.println("Before logout session ID: " + session.getId());
+			session.removeAttribute("owner_email");
+			session.removeAttribute("owner_name");
+			session.removeAttribute("owner_password");
+			session.removeAttribute("dogDetails");
+			session.removeAttribute("allDogs");
 			session.invalidate();
-			System.out.println("After logout session ID: " + session.getId());
-			System.out.println("Log out successful.");
-			//request.getRequestDispatcher("logout.jsp").forward(request, response);
-			response.sendRedirect("logout.jsp");
+			
+			
+			try {
+	            // Attempting to get the session ID again should ideally throw an exception
+	            System.out.println("After logout session ID: " + session.getId());
+	        } catch (IllegalStateException e) {
+	        	// Should go here because session was deleted????
+	            System.out.println("Session has been invalidated.");
+	        }
+			System.out.println("LogoutServlet: Log out successful.");
 		} else {
 			System.out.println("No session to close.");
 		}
-	}
+		System.out.println();
+		Cookie loginCookie = null;
+		Cookie[] cookies =request.getCookies();
+		if(cookies != null) {
+			for (Cookie cookie : cookies) {
+				if(cookie.getName().equals("user")) {
+					loginCookie = cookie;
+					break;
+				}
+			}
+		}
+		if (loginCookie != null) {
+			loginCookie.setMaxAge(0);
+			response.addCookie(loginCookie);
+		}
+		response.sendRedirect("logout.jsp");
+		}
 }

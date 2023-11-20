@@ -37,7 +37,7 @@
 			<input type="text" name="owner_email" class="inputText"/>
 			<br>
 			<label class="label">Password</label> 
-			<input type="text" name="password" class="inputText"/>
+			<input type="password" name="password" class="inputText"/>
 			<br>
 			<input type="submit" value="Login" class="w3-right inputSubmit"/>
 		</form>

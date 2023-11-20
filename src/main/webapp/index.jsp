@@ -37,7 +37,6 @@
 		</h3>
 	</div>
 
-	<br>
 	<!-- Dog Details -->
 	<div class="w3-margin w3-padding w3-center" style="width: 50%">
 		<!-- Dogs Details represented in table -->
@@ -52,14 +51,14 @@
 					<th>Maintenance</th>
 				</tr>
 			</thead>
-			<c:forEach items="${dogDetails}" var="dogObj">
+			<c:forEach var="dog" items="${dogDetails}">
 				<tr>
-					<td><c:out value="${dogObj.name}" /></td>
-					<td><c:out value="${dogObj.age}" /></td>
-					<td><c:out value="${dogObj.breed}" /></td>
-					<td><c:out value="${dogObj.colour}" /></td>
-					<td><c:out value="${dogObj.activity}" /></td>
-					<td><c:out value="${dogObj.maintenance}" /></td>
+					<td><c:out value="${dog.name}" /></td>
+					<td><c:out value="${dog.age}" /></td>
+					<td><c:out value="${dog.breed}" /></td>
+					<td><c:out value="${dog.colour}" /></td>
+					<td><c:out value="${dog.activity}" /></td>
+					<td><c:out value="${dog.maintenance}" /></td>
 				</tr>
 			</c:forEach>
 		</table>
@@ -69,6 +68,7 @@
 			<form method="post" action="SelectedDog">
 		        <label for="selectDog">Select dog to update/delete:</label>
 			        <select name="name" id="selectDog" style="width: 200px;" >
+			        	<option value="" disabled selected>Select Dog</option>
 			            <c:forEach items="${dogDetails}" var="dogObj">
 			                <option value="${dogObj.name}">${dogObj.name}</option>
 			            </c:forEach>
