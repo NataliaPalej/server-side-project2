@@ -31,8 +31,7 @@ public class LogoutServlet extends HttpServlet {
 			session.removeAttribute("dogDetails");
 			session.removeAttribute("allDogs");
 			session.invalidate();
-			
-			
+				
 			try {
 	            // Get the session ID should throw an exception
 	            System.out.println("After logout session ID: " + session.getId());

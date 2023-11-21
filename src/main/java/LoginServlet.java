@@ -42,7 +42,7 @@ public class LoginServlet extends HttpServlet {
             	
             	Cookie loginCookie = new Cookie("user", owner_email);
             	// Setting cookie to expiry after 3min
-            	loginCookie.setMaxAge(3*60);
+            	loginCookie.setMaxAge(10*60);
             	System.out.println("LoginServlet Cookie: " + loginCookie);
 
             	HttpSession session = request.getSession();
